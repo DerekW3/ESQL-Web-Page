@@ -1,3 +1,7 @@
+/* 
+Colori: Nero - #0A0908, Azzurro - #4D9DE0, Rosa - #EB7BC0
+Viola Scura - #3700B3, Viola - #BB86FC, Grigio - #121212
+*/
 /* Import Roboto font and fill the webpage */
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
 * {
@@ -6,7 +10,7 @@
 }
 
 html, body {
-    height: 100dvh, 100vh;
+    height: 100dvh;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -14,4 +18,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #121212;
+}
+
+label {
+    margin: 10px 0px;
+    font-size: 20px;
+    color: #BB86FC;
+}
+
+input {
+    min-width: 150px;
+    min-height: 30px;
+    border-radius: 15px;
+    padding: 6px;
+}
+
+form {
+    min-width: 200px;
+    min-height: 200px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #2c2b2b;
+    border: 2px solid #EB7BC0;
+    border-radius: 25px;
 }
