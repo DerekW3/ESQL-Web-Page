@@ -1,2 +1,2 @@
 # ESQL-Web-Page
-Integration of MySQL, MongoDB, HTML, CSS and PHP to create a webpage simulating a teaching system for students/professors
+Integrazione di MySQL, MongoDB, HTML, CSS and PHP a creare un webpage simulazione di un sistema didattica per studenti e professori
