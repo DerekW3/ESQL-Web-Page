@@ -35,10 +35,7 @@ input {
 }
 
 form {
-    min-width: 200px;
-    min-height: 200px;
     padding: 12px;
-    border-radius: 25px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
