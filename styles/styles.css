@@ -31,10 +31,28 @@ input {
     min-width: 150px;
     min-height: 30px;
     padding: 6px;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 form {
+    min-width: 200px;
+    min-height: 200px;
+    padding: 12px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+button {
+    min-width: 100px;
+    min-height: 30px;
+    border-radius: 10px;
+    border: 2px solid #BB86FC;
+}
+
+.container {
     min-width: 200px;
     min-height: 200px;
     padding: 12px;
@@ -42,7 +60,7 @@ form {
     border-radius: 25px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     background-color: #2c2b2b;
 }

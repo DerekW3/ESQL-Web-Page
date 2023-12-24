@@ -7,15 +7,18 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <form id="login">
-        <label style="margin-top: 0px;" for="nomeUtente">Nome</label>
-        <input type="text" placeholder="Entri Nome" name="nomeUtente" required>
-        
-        <label for="cognomeUtente">Cognome</label>
-        <input type="text" placeholder="Entri Cognome" name="cognomeUtente" required>
+    <div class="container">
+        <form id="login">
+            <label style="margin-top: 0px;" for="nomeUtente">Nome</label>
+            <input type="text" placeholder="Entri Nome" name="nomeUtente" required>
+            
+            <label for="cognomeUtente">Cognome</label>
+            <input type="text" placeholder="Entri Cognome" name="cognomeUtente" required>
 
-        <label for="emailUtente">Email</label>
-        <input type="text" placeholder="Entri Email" name="emailUtente" required>
-    </form>
+            <label for="emailUtente">Email</label>
+            <input type="text" placeholder="Entri Email" name="emailUtente" required>
+        </form>
+        <button type="submit" form="login" value="Submit">Accedi</button>
+    </div>
 </body>
 </html>
