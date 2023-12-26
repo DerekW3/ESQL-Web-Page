@@ -9,6 +9,14 @@ Viola Scura - #3700B3, Viola - #BB86FC, Grigio - #121212
     padding: 0;
 }
 
+:root {
+    --text: #e9e6eb;
+    --background: #130c17;
+    --primary: #c597e0;
+    --secondary: #69169a;
+    --accent: #b030fb;
+}
+
 html, body {
     height: 100dvh;
     font-family: 'Roboto', sans-serif;
@@ -18,13 +26,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #121212;
+    background-color: var(--background);
 }
 
 label {
     margin: 10px 0px;
     font-size: 20px;
-    color: #BB86FC;
+    color: var(--text);
 }
 
 input {
@@ -32,6 +40,7 @@ input {
     min-height: 30px;
     padding: 6px;
     border-radius: 10px;
+    background-color: var(--accent);
 }
 
 form {
@@ -53,11 +62,10 @@ button {
     min-width: 200px;
     min-height: 200px;
     padding: 12px;
-    border: 2px solid #EB7BC0;
     border-radius: 25px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #2c2b2b;
+    background-color: var(--primary);
 }
