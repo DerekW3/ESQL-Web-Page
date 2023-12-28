@@ -4,8 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link ref="stylesheet" href="../styles/signup.css">
 </head>
 <body>
-    
+    <div class="container">
+        <form action="../php/signup.php" method="post" id="signup">
+            <label style="margin-top: 0px;" for="nomeUtente">Nome</label>
+            <input type="text" placeholder="Entri Nome" name="nomeUtente" required>
+            
+            <label for="cognomeUtente">Cognome</label>
+            <input type="text" placeholder="Entri Cognome" name="cognomeUtente" required>
+
+            <label for="emailUtente">Email</label>
+            <input type="text" placeholder="Entri Email" name="emailUtente" required>
+        </form>
+
+        <button type="submit" form="signup" value="Submit">Iscriviti</button>
 </body>
 </html>
