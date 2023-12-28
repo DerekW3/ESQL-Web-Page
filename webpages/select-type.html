@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="../styles/signup.css">
+    <link rel="stylesheet" href="../styles/select-type.css">
 </head>
 <body>
     <div class="container">
-        <form action="../php/select-type.php" method="post" id="selectType">
-            <select name="tipoUtente" id="tipoUtente" required>
-                <option value="studente">Studente</option>
-                <option value="docente">Docente</option>
-            </select>
-        </form>
 
-        <button type="submit" form="selectType" value="Submit">Iscriviti</button>
+        <div class="bar">
+            <form action="../php/select-type.php" method="post" id="selectType">
+                <select name="tipoUtente" id="tipoUtente" required>
+                    <option value="studente">Studente</option>
+                    <option value="docente">Docente</option>
+                </select>
+            </form>
+
+            <button type="submit" form="selectType" value="Submit">Iscriviti</button>
+        </div>
     </div>
 </body>
 </html>
