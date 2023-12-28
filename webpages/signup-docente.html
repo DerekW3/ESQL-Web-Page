@@ -7,20 +7,22 @@
     <link rel="stylesheet" href="../styles/signup.css">
 </head>
 <body>
-    <form action="../php/signup-docente.php" method="post" id="signup">
-        <label style="margin-top: 0px;" for="nomeUtente">Nome</label>
-        <input type="text" placeholder="Entri Nome" name="nomeUtente" required>
-        
-        <label for="cognomeUtente">Cognome</label>
-        <input type="text" placeholder="Entri Cognome" name="cognomeUtente" required>
+    <div class="container">
+        <form action="../php/signup-docente.php" method="post" id="signup">
+            <label style="margin-top: 0px;" for="nomeUtente">Nome</label>
+            <input type="text" placeholder="Entri Nome" name="nomeUtente" required>
+            
+            <label for="cognomeUtente">Cognome</label>
+            <input type="text" placeholder="Entri Cognome" name="cognomeUtente" required>
 
-        <label for="emailUtente">Email</label>
-        <input type="text" placeholder="Entri Email" name="emailUtente" required>
+            <label for="emailUtente">Email</label>
+            <input type="text" placeholder="Entri Email" name="emailUtente" required>
 
-        <label for="telefonoUtente">Telefono</label>
-        <input type="text" placeholder="Entri Telefono" name="telefonoUtente">
-    </form>
+            <label for="telefonoUtente">Telefono</label>
+            <input type="text" placeholder="Entri Telefono" name="telefonoUtente">
+        </form>
 
-    <button type="submit" form="signup" value="Submit">Iscriviti</button>
+        <button style="margin-top: 10px;" type="submit" form="signup" value="Submit">Iscriviti</button>
+    </div>
 </body>
 </html>
