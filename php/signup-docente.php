@@ -45,7 +45,7 @@
         }
 
         try {
-            $sql="INSERT INTO DOCENTI(NomeUtente, EmailUtente, CognomeUtente, NomeDipartimento, NomeCorso) VALUES ('$nome', '$email', '$cognome', '$dipartimento', '$corso')";
+            $sql="INSERT INTO DOCENTI(EmailUtente, NomeUtente, CognomeUtente, NomeDipartimento, NomeCorso) VALUES ('$email', '$nome', '$cognome', '$dipartimento', '$corso')";
             $result=$pdo->exec($sql);
         } catch (PDOException $e) {
             echo('Codice errore'.$e->getMessage());
