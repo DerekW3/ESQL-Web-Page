@@ -1,0 +1,70 @@
+/* Import Roboto font and fill the webpage */
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --text: hsl(276, 11%, 91%);
+    --background: hsl(0, 0%, 7%);
+    --background2: hsl(0, 0%, 15%);
+    --primary: hsl(278, 54%, 74%);
+    --secondary: hsl(278, 75%, 35%);
+    --accent: hsl(278, 96%, 59%);
+}
+
+html, body {
+    height: 100dvh;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background);
+}
+
+button {
+    min-width: 6dvw;
+    min-height: 5dvh;
+    text-decoration: none;
+    padding: 4px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--primary);
+}
+
+form {
+    min-height: 5dvh;
+    display: flex;
+    flex: auto;
+}
+
+select {
+    flex: auto;
+    background-color: var(--background2);
+    border: none;
+    color: var(--text);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.bar {
+    min-width: 45dvw;
+    min-height: 6dvh;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--background2);
+}
