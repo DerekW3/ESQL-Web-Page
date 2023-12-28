@@ -35,7 +35,7 @@ button {
     border-radius: 6px;
     font-size: 2vw;
     color: var(--text);
-    background-color: var(--primary);
+    background-color: var(--accent);
 }
 
 form {

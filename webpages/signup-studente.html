@@ -9,23 +9,26 @@
 <body>
     <div class="container">
         <form action="../php/signup-studente.php" method="post" id="signup">
-            <label style="margin-top: 0px;" for="nomeUtente">Nome</label>
-            <input type="text" placeholder="Entri Nome" name="nomeUtente" required>
-            
-            <label for="cognomeUtente">Cognome</label>
-            <input type="text" placeholder="Entri Cognome" name="cognomeUtente" required>
+            <div class="subsection">
+                <label style="margin-top: 0px;" for="nomeUtente">Nome</label>
+                <input type="text" placeholder="Entri Nome" name="nomeUtente" required>
 
-            <label for="emailUtente">Email</label>
-            <input type="text" placeholder="Entri Email" name="emailUtente" required>
+                <label for="emailUtente">Email</label>
+                <input type="text" placeholder="Entri Email" name="emailUtente" required>
+                
+                <label for="codiceUtente">Codice</label>
+                <input type="text" placeholder="Entri Codice" name="codiceUtente" required>
+            </div>
+            <div class="subsection">
+                <label for="cognomeUtente">Cognome</label>
+                <input type="text" placeholder="Entri Cognome" name="cognomeUtente" required>
 
-            <label for="telefonoUtente">Telefono</label>
-            <input type="number" placeholder="Entri Telefono" name="telefonoUtente">
-
-            <label for="codiceUtente">Codice</label>
-            <input type="text" placeholder="Entri Codice" name="codiceUtente" required>
-
-            <label for="annoImmatricolazione">Anno Immatricolazione</label>
-            <input type="number" placeholder="Entri Anno Immatricolazione" name="annoImmatricolazione" required>
+                <label for="telefonoUtente">Telefono</label>
+                <input type="number" placeholder="Entri Telefono" name="telefonoUtente">
+                
+                <label for="annoImmatricolazione">Anno Immatricolazione</label>
+                <input type="number" placeholder="Entri Anno Immatricolazione" name="annoImmatricolazione" required>
+            </div>
         </form>
 
         <button style="margin-top: 10px;" type="submit" form="signup" value="Submit">Iscriviti</button>

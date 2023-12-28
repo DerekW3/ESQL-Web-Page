@@ -53,7 +53,6 @@ form {
     padding: 12px;
     padding-bottom: 0px;
     display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 }
@@ -77,4 +76,12 @@ button {
     justify-content: center;
     align-items: center;
     background-color: var(--background2);
+}
+
+.subsection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
 }
