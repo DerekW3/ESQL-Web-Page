@@ -27,25 +27,29 @@ body {
 }
 
 button {
-    min-width: 6dvw;
-    min-height: 5dvh;
+    min-width: 6vw;
+    min-height: 5vh;
     text-decoration: none;
-    padding: 4px;
+    padding: 8px;
     border: none;
     border-radius: 6px;
+    font-size: 2vw;
+    color: var(--text);
     background-color: var(--primary);
 }
 
 form {
     display: flex;
-    flex: auto;
+    flex: 1;
 }
 
 select {
-    flex: auto;
-    background-color: var(--background2);
+    min-height: 5vh;
     border: none;
+    flex: auto;
+    font-size: 2vw;
     color: var(--text);
+    background-color: var(--background2);
 }
 
 p {
