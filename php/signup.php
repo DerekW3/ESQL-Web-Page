@@ -10,7 +10,7 @@
         $cognome=$_POST["cognomeUtente"];
         $email=$_POST["emailUtente"];
         $telefono=$_POST["telefonoUtente"];
-        $type=$_POST["tipoUtente"];
+        $type=(int)$_POST["tipoUtente"];
 
         try {
             $pdo=new PDO("mysql:host=localhost; dbname=ESQL", "root", "secretpassword1");
