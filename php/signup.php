@@ -31,15 +31,15 @@
         } catch (PDOException) { }
 
         try {
-            if (is_null($telefono)) {
-                $sql='INSERT INTO UTENTI (Nome, Cognome, Email) VALUES ($nome, $cognome, $email)';
+            if (empty($telefono)) {
+                $sql='INSERT into UTENTI(Nome, Cognome, Email) VALUES (`$nome`, `$cognome`, `$email`)';
                 $result=$pdo->exec($sql);
             } else {
-                $sql='INSERT INTO UTENTI VALUES ($nome, $cognome, $email, $telefono)';
+                $sql='INSERT into UTENTI(Nome, Cognome, Email, NumeroTelefono) VALUES ("$nome", "$cognome", "$email", 1)';
                 $result=$pdo->exec($sql);
             }
         } catch (PDOException $e) {
-            echo('Codice errore'.e->getMessage());
+            echo('Codice errore'.$e->getMessage());
             exit();
         }
     ?>
