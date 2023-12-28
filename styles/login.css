@@ -52,6 +52,12 @@ form {
     align-items: center;
 }
 
+a {
+    text-decoration: none;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
 button {
     min-width: 100px;
     min-height: 30px;
