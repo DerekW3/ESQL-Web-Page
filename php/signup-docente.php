@@ -10,6 +10,8 @@
         $cognome=$_POST["cognomeUtente"];
         $email=$_POST["emailUtente"];
         $telefono=$_POST["telefonoUtente"];
+        $dipartimento=$_POST["nomeDipartimento"];
+        $corso=$_POST["nomeCorso"];
 
         try {
             $pdo=new PDO("mysql:host=localhost; dbname=ESQL", "root", "secretpassword1");
@@ -37,6 +39,14 @@
                 $sql="INSERT into UTENTI(Nome, Cognome, Email, NumeroTelefono) VALUES ('$nome', '$cognome', '$email', '$telefono')";
                 $result=$pdo->exec($sql);
             }
+        } catch (PDOException $e) {
+            echo('Codice errore'.$e->getMessage());
+            exit();
+        }
+
+        try {
+            $sql="INSERT INTO DOCENTI(NomeUtente, EmailUtente, CognomeUtente, NomeDipartimento, NomeCorso) VALUES ('$nome', '$email', '$cognome', '$dipartimento', '$corso')";
+            $result=$pdo->exec($sql);
         } catch (PDOException $e) {
             echo('Codice errore'.$e->getMessage());
             exit();
