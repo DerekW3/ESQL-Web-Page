@@ -37,14 +37,6 @@
                 $sql="INSERT into UTENTI(Nome, Cognome, Email, NumeroTelefono) VALUES ('$nome', '$cognome', '$email', '$telefono')";
                 $result=$pdo->exec($sql);
             }
-
-            if ($tipo == "studente") {
-                header("Location: ../webpages/signup-studente.html");
-                exit();
-            } elseif ($tipo == "docente") {
-                header("Location: ../webpages/signup-docente.html");
-                exit();
-            }
         } catch (PDOException $e) {
             echo('Codice errore'.$e->getMessage());
             exit();
