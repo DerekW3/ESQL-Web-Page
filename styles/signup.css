@@ -40,8 +40,18 @@ input {
     border-radius: 10px;
 }
 
+select {
+    min-width: 100px;
+    min-height: 30px;
+    margin: 10px 0px;
+    border-radius: 6px;
+    text-align: center;
+    background-color: var(--primary);
+}
+
 form {
     padding: 12px;
+    padding-bottom: 0px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
