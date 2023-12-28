@@ -32,10 +32,10 @@
 
         try {
             if (empty($telefono)) {
-                $sql='INSERT into UTENTI(Nome, Cognome, Email) VALUES (`$nome`, `$cognome`, `$email`)';
+                $sql="INSERT INTO UTENTI(Nome, Cognome, Email) VALUES ('$nome', '$cognome', '$email')";
                 $result=$pdo->exec($sql);
             } else {
-                $sql='INSERT into UTENTI(Nome, Cognome, Email, NumeroTelefono) VALUES ("$nome", "$cognome", "$email", 1)';
+                $sql="INSERT into UTENTI(Nome, Cognome, Email, NumeroTelefono) VALUES ('$nome', '$cognome', '$email', '$telefono')";
                 $result=$pdo->exec($sql);
             }
         } catch (PDOException $e) {
