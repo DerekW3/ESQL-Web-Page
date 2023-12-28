@@ -37,7 +37,6 @@ button {
 }
 
 form {
-    min-height: 5dvh;
     display: flex;
     flex: auto;
 }
@@ -49,22 +48,30 @@ select {
     color: var(--text);
 }
 
+p {
+    text-align: center;
+    font-size: 3vw;
+    color: var(--text);
+}
+
 .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    flex: auto;
 }
 
 .bar {
-    min-width: 45dvw;
-    min-height: 6dvh;
+    min-width: 50vw;
+    min-height: 8vh;
     padding: 10px;
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+    flex: auto;
     background-color: var(--background2);
 }
