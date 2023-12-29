@@ -9,26 +9,31 @@
 <body>
     <div class="container">
         <form action="../php/signup-studente.php" method="post" id="signup">
-            <div class="subsection">
-                <label style="margin-top: 0px;" for="nomeUtente">Nome</label>
-                <input type="text" placeholder="Entri Nome" name="nomeUtente" required>
-
-                <label for="emailUtente">Email</label>
-                <input type="text" placeholder="Entri Email" name="emailUtente" required>
-                
-                <label for="codiceUtente">Codice</label>
-                <input type="text" placeholder="Entri Codice" name="codiceUtente" required>
+            <div class="container-two">
+                <div class="subsection">
+                    <label style="margin-top: 0px;" for="nomeUtente">Nome</label>
+                    <input type="text" placeholder="Entri Nome" name="nomeUtente" required>
+    
+                    <label for="emailUtente">Email</label>
+                    <input type="text" placeholder="Entri Email" name="emailUtente" required>
+                    
+                    <label for="codiceUtente">Codice</label>
+                    <input type="text" placeholder="Entri Codice" name="codiceUtente" required>
+                </div>
+                <div class="subsection">
+                    <label style="margin-top: 0px;" for="cognomeUtente">Cognome</label>
+                    <input type="text" placeholder="Entri Cognome" name="cognomeUtente" required>
+    
+                    <label for="telefonoUtente">Telefono</label>
+                    <input type="number" placeholder="Entri Telefono" name="telefonoUtente">
+                    
+                    <label for="annoImmatricolazione">Anno Immatricolazione</label>
+                    <input type="number" placeholder="Entri Anno Immatricolazione" name="annoImmatricolazione" required>
+                </div>
             </div>
-            <div class="subsection">
-                <label style="margin-top: 0px;" for="cognomeUtente">Cognome</label>
-                <input type="text" placeholder="Entri Cognome" name="cognomeUtente" required>
 
-                <label for="telefonoUtente">Telefono</label>
-                <input type="number" placeholder="Entri Telefono" name="telefonoUtente">
-                
-                <label for="annoImmatricolazione">Anno Immatricolazione</label>
-                <input type="number" placeholder="Entri Anno Immatricolazione" name="annoImmatricolazione" required>
-            </div>
+            <label for="password">Password</label>
+            <input type="text" placeholder="Entri Password" name="password" required>
         </form>
 
         <button style="margin-top: 10px;" type="submit" form="signup" value="Submit">Iscriviti</button>
