@@ -22,15 +22,14 @@
         try {
             $sql ="SELECT USER FROM mysql.user WHERE USER = '$email'";
             $result=$pdo->query($sql);
+            if ($result->rowCount() == 0) {
+                header("Location: ../webpages/select-type.html");
+                exit();
+            } else {
+                // TODO: Redirect to the main page based on type
+            }
         } catch (PDOException) {
             exit();
-        }
-        
-        if ($result->rowCount() == 0) {
-            header("Location: ../webpages/select-type.html");
-            exit();
-        } else {
-            // TODO: Redirect to the main page based on type
         }
     ?>
 </body>
