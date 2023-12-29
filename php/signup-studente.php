@@ -14,7 +14,7 @@
         $anno=$_POST["annoImmatricolazione"];
 
         try {
-            $pdo=new PDO("mysql:host=localhost; dbname=ESQL", "root", "secretpassword1");
+            $pdo=new PDO("mysql:host=localhost; dbname=ESQL", "ESQLadmin", "esqladminpassword1");
             
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $pdo->exec('SET NAMES "utf8"');
