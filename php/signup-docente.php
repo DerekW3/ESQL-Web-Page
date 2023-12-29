@@ -12,6 +12,7 @@
         $telefono=$_POST["telefonoUtente"];
         $dipartimento=$_POST["nomeDipartimento"];
         $corso=$_POST["nomeCorso"];
+        $password=$_POST["password"]
 
         try {
             $pdo=new PDO("mysql:host=localhost; dbname=ESQL", "root", "secretpassword1");
@@ -42,6 +43,13 @@
         } catch (PDOException $e) {
             echo('Codice errore'.$e->getMessage());
             exit();
+        }
+
+        try {
+            $sql="CREATE USER '$email'@'localhost' IDENTIFIED BY '$password'";
+            $result=$pdo->exec($sql);
+        } catch (PDOException $e) {
+            echo('Codice errore'.$e->getMessage());
         }
 
         try {
