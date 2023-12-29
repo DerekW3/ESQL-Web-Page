@@ -12,7 +12,7 @@
         $telefono=$_POST["telefonoUtente"];
         $dipartimento=$_POST["nomeDipartimento"];
         $corso=$_POST["nomeCorso"];
-        $password=$_POST["password"]
+        $password=$_POST["password"];
 
         try {
             $pdo=new PDO("mysql:host=localhost; dbname=ESQL", "root", "secretpassword1");
