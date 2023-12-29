@@ -21,7 +21,7 @@
         }
 
         try {
-            $sql ='SELECT * FROM UTENTI WHERE $nome=Nome, $cognome=Cognome, $email=Email';
+            $sql ="SELECT USER FROM mysql.user WHERE USER = '$email'";
             $result=$pdo->query($sql);
         } catch (PDOException) {
             header("Location: ../webpages/select-type.html");
