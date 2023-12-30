@@ -1,0 +1,20 @@
+/* Import Roboto font and fill the webpage */
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --text: hsl(276, 11%, 91%);
+    --background: hsl(0, 0%, 7%);
+    --background2: hsl(0, 0%, 15%);
+    --primary: hsl(278, 54%, 74%);
+    --secondary: hsl(278, 75%, 35%);
+    --accent: hsl(278, 96%, 59%);
+}
+
+html, body {
+    height: 100dvh;
+    font-family: 'Roboto', sans-serif;
+}
