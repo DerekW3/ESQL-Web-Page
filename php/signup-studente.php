@@ -12,6 +12,7 @@
         $telefono=$_POST["telefonoUtente"];
         $codice=$_POST["codiceUtente"];
         $anno=$_POST["annoImmatricolazione"];
+        $password=$_POST["password"];
 
         try {
             $pdo=new PDO("mysql:host=localhost; dbname=ESQL", "ESQLadmin", "esqladminpassword1");
@@ -34,6 +35,16 @@
         } catch (PDOException) { }
 
         try {
+            $sql="CREATE USER '$email'@'localhost' IDENTIFIED BY '$password'";
+            $result=$pdo->query($sql);
+
+            $sql="GRANT SELECT, INSERT, UPDATE on ESQL.* TO '$email'@'localhost'";
+            $result=$pdo->query($sql);
+        } catch (PDOException $e) {
+            echo('Codice errore'.$e->getMessage());
+        }
+
+        try {
             if (empty($telefono)) {
                 $sql="INSERT INTO UTENTI(Nome, Cognome, Email) VALUES ('$nome', '$cognome', '$email')";
                 $result=$pdo->exec($sql);
@@ -53,5 +64,8 @@
             echo('Codice errore'.$e->getMessage());
             exit();
         }
+
+        header("Location: ../index.html");
+        exit();
     ?>
 </body>
