@@ -30,11 +30,18 @@
             if ($result->rowCount() == 0) {
                 header("Location: ../index.html");
                 exit();
-            } else {
-                header("Location: ../index.html");
-                exit();
             }
         } catch (PDOException) { }
+
+        try {
+            $sql="CREATE USER '$email'@'localhost' IDENTIFIED BY '$password'";
+            $result=$pdo->query($sql);
+
+            $sql="GRANT SELECT, INSERT, UPDATE on ESQL.* TO '$email'@'localhost'";
+            $result=$pdo->query($sql);
+        } catch (PDOException $e) {
+            echo('Codice errore'.$e->getMessage());
+        }
 
         try {
             if (empty($telefono)) {
