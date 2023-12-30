@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -33,17 +36,16 @@
                 setcookie("name", $name, time() + 3.6e6);
                 setcookie("cognome", $cognome, time() + 3.6e6);
                 
-                session_start();
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;
                 
                 $sql="SELECT * FROM STUDENTI WHERE EmailUtente = '$email'";
                 $result=$pdo->query($sql);
                 if ($result->rowCount() > 0) {
-                    header("Location: ../webpages/student-homepage.html");
+                    header("Location: ./student-homepage.php");
                     exit();
                 } else {
-                    header("Location: ../webpages/professor-homepage.html");
+                    header("Location: ./professor-homepage.php");
                     exit();
                 }
             }
