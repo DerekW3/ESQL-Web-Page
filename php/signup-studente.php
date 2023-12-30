@@ -18,8 +18,9 @@
             
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $pdo->exec('SET NAMES "utf8"');
-        } catch(PDOException) {
+        } catch(PDOException $e) {
             echo("Connessione non riuscita");
+            echo($e);
             exit();
         }
 

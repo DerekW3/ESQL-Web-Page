@@ -10,7 +10,7 @@
         $password=$_POST["password"];
 
         try {
-            $pdo=new PDO("mysql:host=localhost; dbname=ESQL", "root", "secretpassword1");
+            $pdo=new PDO("mysql:host=localhost; dbname=ESQL", "ESQLadmin", "esqladminpassword1");
             
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $pdo->exec('SET NAMES "utf8"');
@@ -32,7 +32,8 @@
                 }
                 setcookie("name", $name, time() + 3.6e6);
                 setcookie("cognome", $cognome, time() + 3.6e6);
-
+                
+                session_start();
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;
                 // TODO: Redirect to the main page based on type
