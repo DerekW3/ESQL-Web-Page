@@ -27,10 +27,7 @@
         try {
             $sql ="SELECT USER FROM mysql.user WHERE USER = '$email'";
             $result=$pdo->query($sql);
-            if ($result->rowCount() == 0) {
-                header("Location: ../index.html");
-                exit();
-            } else {
+            if ($result->rowCount() != 0) {
                 header("Location: ../index.html");
                 exit();
             }

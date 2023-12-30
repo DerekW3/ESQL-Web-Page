@@ -36,7 +36,16 @@
                 session_start();
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;
-                // TODO: Redirect to the main page based on type
+                
+                $sql="SELECT * FROM STUDENTI WHERE EmailUtente = '$email'";
+                $result=$pdo->query($sql);
+                if ($result->rowCount() > 0) {
+                    header("Location: ../webpages/student-homepage.html");
+                    exit();
+                } else {
+                    header("Location: ../webpages/professor-homepage.html");
+                    exit();
+                }
             }
         } catch (PDOException) {
             exit();
