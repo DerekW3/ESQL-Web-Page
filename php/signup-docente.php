@@ -70,5 +70,8 @@
             echo('Codice errore'.$e->getMessage());
             exit();
         }
+
+        header("Location: ../index.html");
+        exit();
     ?>
 </body>
