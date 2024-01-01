@@ -12,15 +12,15 @@
         $telefono=$_POST["telefonoUtente"];
         $dipartimento=$_POST["nomeDipartimento"];
         $corso=$_POST["nomeCorso"];
-        $password=$_POST["password"];
+        $password=md5($_POST["password"]);
 
         try {
             $pdo=new PDO("mysql:host=localhost; dbname=ESQL", "ESQLadmin", "esqladminpassword1");
             
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $pdo->exec('SET NAMES "utf8"');
-        } catch(PDOException) {
-            echo("Connessione non riuscita");
+        } catch(PDOException $e) {
+            echo("Connessione non riuscita").$e->getMessage();
             exit();
         }
 
@@ -33,42 +33,30 @@
             }
         } catch (PDOException) { }
 
+        $pdo->beginTransaction(void);
         try {
             $sql="CREATE USER '$email'@'localhost' IDENTIFIED BY '$password'";
             $result=$pdo->query($sql);
 
             $sql="GRANT SELECT, INSERT, UPDATE on ESQL.* TO '$email'@'localhost'";
             $result=$pdo->query($sql);
-        } catch (PDOException $e) {
-            echo('Codice errore'.$e->getMessage());
-        }
 
-        try {
-            if (empty($telefono)) {
-                $sql="INSERT INTO UTENTI(Nome, Cognome, Email) VALUES ('$nome', '$cognome', '$email')";
-                $result=$pdo->exec($sql);
-            } else {
-                $sql="INSERT into UTENTI(Nome, Cognome, Email, NumeroTelefono) VALUES ('$nome', '$cognome', '$email', '$telefono')";
+            $sql="INSERT INTO UTENTI(Nome, Cognome, Email) VALUES ('$nome', '$cognome', '$email')";
+            $result=$pdo->exec($sql);
+            
+            if (!is_empty($telefono)) {
+                $sql="INSERT INTO TELEFONI(EmailUtente, NumeroTelefono) VALUES ('$email', '$telefono')";
                 $result=$pdo->exec($sql);
             }
-        } catch (PDOException $e) {
-            echo('Codice errore'.$e->getMessage());
-            exit();
-        }
 
-        try {
-            $sql="CREATE USER '$email'@'localhost' IDENTIFIED BY '$password'";
-            $result=$pdo->exec($sql);
-        } catch (PDOException $e) {
-            echo('Codice errore'.$e->getMessage());
-        }
-
-        try {
             $sql="INSERT INTO DOCENTI(EmailUtente, NomeUtente, CognomeUtente, NomeDipartimento, NomeCorso) VALUES ('$email', '$nome', '$cognome', '$dipartimento', '$corso')";
             $result=$pdo->exec($sql);
+
+            $pdo->commit();
         } catch (PDOException $e) {
             echo('Codice errore'.$e->getMessage());
-            exit();
+            echo('Signup Failed');
+            $pdo->rollback();
         }
 
         header("Location: ../index.html");
