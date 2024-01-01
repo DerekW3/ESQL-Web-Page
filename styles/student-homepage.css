@@ -18,3 +18,9 @@ html, body {
     height: 100dvh;
     font-family: 'Roboto', sans-serif;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background);
+}

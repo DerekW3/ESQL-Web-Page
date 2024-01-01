@@ -18,6 +18,7 @@
             $pdo=new PDO("mysql:host=localhost; dbname=ESQL", "ESQLadmin", "esqladminpassword1");
             
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo->setAttribute(PDO::ATTR_AUTOCOMMIT, FALSE);
             $pdo->exec('SET NAMES "utf8"');
         } catch(PDOException $e) {
             echo("Connessione non riuscita").$e->getMessage();
@@ -33,7 +34,6 @@
             }
         } catch (PDOException) { }
 
-        $pdo->beginTransaction(void);
         try {
             $sql="CREATE USER '$email'@'localhost' IDENTIFIED BY '$password'";
             $result=$pdo->query($sql);
@@ -44,7 +44,7 @@
             $sql="INSERT INTO UTENTI(Nome, Cognome, Email) VALUES ('$nome', '$cognome', '$email')";
             $result=$pdo->exec($sql);
             
-            if (!is_empty($telefono)) {
+            if (!empty($telefono)) {
                 $sql="INSERT INTO TELEFONI(EmailUtente, NumeroTelefono) VALUES ('$email', '$telefono')";
                 $result=$pdo->exec($sql);
             }
@@ -56,7 +56,7 @@
         } catch (PDOException $e) {
             echo('Codice errore'.$e->getMessage());
             echo('Signup Failed');
-            $pdo->rollback();
+            $pdo->rollBack();
         }
 
         header("Location: ../index.html");
