@@ -22,5 +22,19 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
+    /* background-color: var(--background); */
+}
+
+.header {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+    background-color: var(--primary);
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex: auto;
     background-color: var(--background);
 }

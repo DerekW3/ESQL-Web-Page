@@ -11,15 +11,13 @@
 </head>
 <body>
     <div class="header">
+        <h3><?php echo $_SESSION['email']; ?></h3>
         <h3>Messaggi</h3>
         <h3>Voti</h3>
         <h3>Gatti</h3>
     </div>
     <div class="content">
-
+        
     </div>
-    <?php
-        echo($_SESSION['email']);
-    ?>
 </body>
 </html>
