@@ -10,14 +10,11 @@
     <link rel="stylesheet" href="../styles/student-homepage.css">
 </head>
 <body>
-    <div class="header">
-        <h3><?php echo $_SESSION['email']; ?></h3>
-        <h3>Messaggi</h3>
-        <h3>Voti</h3>
-        <h3>Gatti</h3>
-    </div>
+    <div><?php echo("Ciao, " . $_COOKIE['name']); ?></div>
     <div class="content">
-        
+        <div>Messaggi</div>
+        <div>Esami</div>
+        <div></div>
     </div>
 </body>
 </html>

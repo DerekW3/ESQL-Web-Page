@@ -41,15 +41,13 @@
             $sql="GRANT SELECT, INSERT, UPDATE on ESQL.* TO '$email'@'localhost'";
             $result=$pdo->query($sql);
 
-            $sql="INSERT INTO UTENTI(Nome, Cognome, Email) VALUES ('$nome', '$cognome', '$email')";
-            $result=$pdo->exec($sql);
-            
             if (!empty($telefono)) {
-                $sql="INSERT INTO TELEFONI(EmailUtente, NumeroTelefono) VALUES ('$email', '$telefono')";
-                $result=$pdo->exec($sql);
+                $numeroTelefono = $telefono;
+            } else {
+                $numeroTelefono = 0;
             }
 
-            $sql="INSERT INTO STUDENTI(EmailUtente, NomeUtente, CognomeUtente, Codice, AnnoImmatricolazione) VALUE ('$email', '$nome', '$cognome', '$codice', '$anno')";
+            $sql="CALL iscrivi_studente('$email', '$nome', '$cognome', '$numeroTelefono', '$codice', '$anno')";
             $result=$pdo->exec($sql);
 
             $pdo->commit();
