@@ -15,6 +15,9 @@
         <a href="./messaggi.php"><img id="messaggi" src="https://cdn3.iconfinder.com/data/icons/email-51/48/53-512.png" alt="Simbolo per messaggi"></a>
     </div>
     <div class="content">
+        <?php
+            
+        ?>
     </div>
 </body>
 </html>
