@@ -34,8 +34,8 @@ button {
     border: none;
     border-radius: 6px;
     font-size: 2vw;
-    color: var(--text);
-    background-color: var(--accent);
+    color: var(--background);
+    background-color: var(--primary);
 }
 
 form {

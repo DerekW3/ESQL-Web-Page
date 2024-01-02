@@ -32,7 +32,7 @@ body {
     align-items: center;
     height: 5vh;
     padding: 10px;
-    background-color: var(--secondary);
+    background-color: var(--background2);
 }
 
 #messaggi {
