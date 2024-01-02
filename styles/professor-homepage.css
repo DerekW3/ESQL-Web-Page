@@ -18,3 +18,31 @@ html, body {
     height: 100dvh;
     font-family: 'Roboto', sans-serif;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--background);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5vh;
+    padding: 10px;
+    background-color: var(--background2);
+}
+
+#messaggi {
+    height: 4vh;
+    width: 4vh;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    padding: 10px 20px;
+}
