@@ -46,3 +46,13 @@ body {
     flex: auto;
     padding: 10px 20px;
 }
+
+#testTitle {
+    font-size: 25px;
+    color: var(--text);
+}
+
+#none {
+    text-align: center;
+    color: white;
+}
