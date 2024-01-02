@@ -22,26 +22,29 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: 10px;
     background-color: var(--background);
 }
 
-.greeting {
-    font-size: 3vw;
-    color: var(--text);
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5vh;
+    padding: 10px;
+    background-color: var(--secondary);
+}
+
+#messaggi {
+    height: 4vh;
+    width: 4vh;
 }
 
 .content {
     display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    min-width: 30vw;
-    min-height: 30vh;
-    border-radius: 25px;
-    background-color: var(--background2);
+    flex: auto;
 }
 
 .selection {

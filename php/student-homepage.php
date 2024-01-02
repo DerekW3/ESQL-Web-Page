@@ -10,10 +10,11 @@
     <link rel="stylesheet" href="../styles/student-homepage.css">
 </head>
 <body>
-    <div class="greeting"><?php echo("Ciao, " . $_COOKIE['name']); ?></div>
+    <div class="header">
+        <h3><?php echo("Ciao, " . $_COOKIE['name']); ?></h3>
+        <a href="./messaggi.php"><img id="messaggi" src="https://cdn3.iconfinder.com/data/icons/email-51/48/53-512.png" alt="Simbolo per messaggi"></a>
+    </div>
     <div class="content">
-        <div class="selection">Messaggi</div>
-        <div class="selection">Esami</div>
     </div>
 </body>
 </html>
