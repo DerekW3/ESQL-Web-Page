@@ -12,9 +12,8 @@
 <body>
     <div class="greeting"><?php echo("Ciao, " . $_COOKIE['name']); ?></div>
     <div class="content">
-        <div>Messaggi</div>
-        <div>Esami</div>
-        <div></div>
+        <div class="selection">Messaggi</div>
+        <div class="selection">Esami</div>
     </div>
 </body>
 </html>

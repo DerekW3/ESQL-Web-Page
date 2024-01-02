@@ -43,3 +43,14 @@ body {
     border-radius: 25px;
     background-color: var(--background2);
 }
+
+.selection {
+    min-width: 10vw;
+    min-height: 10vh;
+    line-height: 10vh;
+    font-size: 2vw;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: var(--accent);
+}
