@@ -22,12 +22,24 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    /* background-color: var(--background); */
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--background);
+}
+
+.greeting {
+    font-size: 3vw;
+    color: var(--text);
 }
 
 .content {
     display: flex;
-    justify-content: center;
-    flex: auto;
-    background-color: var(--background);
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    min-width: 30vw;
+    min-height: 30vh;
+    border-radius: 25px;
+    background-color: var(--background2);
 }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../styles/student-homepage.css">
 </head>
 <body>
-    <div><?php echo("Ciao, " . $_COOKIE['name']); ?></div>
+    <div class="greeting"><?php echo("Ciao, " . $_COOKIE['name']); ?></div>
     <div class="content">
         <div>Messaggi</div>
         <div>Esami</div>
