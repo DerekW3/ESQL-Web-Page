@@ -61,7 +61,7 @@ h3 {
     gap: 10px;
 }
 
-#testTitle {
+#title {
     font-size: 25px;
     color: var(--text);
 }
@@ -91,4 +91,15 @@ h3 {
 #info {
     display: flex;
     flex-direction: column;
+}
+
+.azioni {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.azione {
+    width: 30vw;
+    font-size: 20px;
 }

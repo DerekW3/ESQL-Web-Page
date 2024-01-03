@@ -17,7 +17,7 @@ session_start()
         <a href="./messaggi.php"><img id="messaggi" src="https://cdn3.iconfinder.com/data/icons/email-51/48/53-512.png" alt="Simbolo per messaggi"></a>
     </div>
     <div class="content">
-        <h3 id="testTitle">Test Disponibili<h3>
+        <h3 id="title">Test Disponibili<h3>
                 <div class="tests">
                     <?php
                     try {
@@ -42,12 +42,12 @@ session_start()
                                 $dataCreazione = $row['DataCreazione'];
                                 echo
                                 "<div class=\"test\">
-                                    <div class=\"info\">
-                                        <h3 style=\"color: var(--text);\">$titolo</h3>
-                                        <h3 style=\"color: var(--text);\">$dataCreazione</h3>
-                                    </div>
-                                    <a href=\"../index.html\"><button id=\"accediTest\">Accedi</button></a>
-                                </div>";
+                            <div class=\"info\">
+                                <h3 style=\"color: var(--text);\">$titolo</h3>
+                                <h3 style=\"color: var(--text);\">$dataCreazione</h3>
+                            </div>
+                            <a href=\"../index.html\"><button id=\"accediTest\">Accedi</button></a>
+                        </div>";
                             }
                         }
                     } catch (PDOException $e) {
@@ -55,6 +55,11 @@ session_start()
                         exit();
                     }
                     ?>
+                </div>
+                <h3 id="title">Azioni Disponibili</h3>
+                <div class="azioni">
+                    <a href="../index.html"><button class="azione">Crea Tabella Esercizio</button></a>
+                    <a href="../index.html"><button class="azione">Crea Nuovo Test</button></a>
                 </div>
     </div>
 </body>
