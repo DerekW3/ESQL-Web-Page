@@ -38,8 +38,16 @@ session_start()
                             echo '<div id="none">Nessun Test Disponibile</div>';
                         } else {
                             foreach ($result as $row) {
-                                $name = $row['Nome'];
-                                $cognome = $row['Cognome'];
+                                $titolo = $row['Titolo'];
+                                $dataCreazione = $row['DataCreazione'];
+                                echo
+                                "<div class=\"test\">
+                                    <div class=\"info\">
+                                        <h3 style=\"color: var(--text);\">$titolo</h3>
+                                        <h3 style=\"color: var(--text);\">$dataCreazione</h3>
+                                    </div>
+                                    <a href=\"../index.html\"><button id=\"accediTest\">Accedi</button></a>
+                                </div>";
                             }
                         }
                     } catch (PDOException $e) {
