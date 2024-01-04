@@ -7,7 +7,8 @@
 
 <body>
     <?php
-    require_once 'config.php';
+    require_once '../config.php';
+
     $nome = $_POST["nomeUtente"];
     $cognome = $_POST["cognomeUtente"];
     $email = $_POST["emailUtente"];
@@ -17,13 +18,12 @@
     $password = $_POST["password"];
 
     try {
-        $pdo = new PDO("mysql:host='$db_host'; dbname='$db_name'", $db_username, $db_password);
+        $pdo = new PDO("mysql:host=$db_host; dbname=$db_name", $db_username, $db_password);
 
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $pdo->setAttribute(PDO::ATTR_AUTOCOMMIT, FALSE);
         $pdo->exec('SET NAMES "utf8"');
     } catch (PDOException $e) {
-        echo ($db_name);
         echo ("Connessione non riuscita") . $e->getMessage();
         exit();
     }

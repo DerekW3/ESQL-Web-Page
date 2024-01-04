@@ -14,10 +14,10 @@
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
     $dotenv->load();
 
-    $db_host = getenv('DB_HOST');
-    $db_name = getenv('DB_NAME');
-    $db_username = getenv('DB_USERNAME');
-    $db_password = getenv('DB_PASSWORD');
+    $db_host = $_ENV['DB_HOST'];
+    $db_name = $_ENV['DB_NAME'];
+    $db_username = $_ENV['DB_USERNAME'];
+    $db_password = $_ENV['DB_PASSWORD'];
     ?>
 </body>
 
