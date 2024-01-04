@@ -59,7 +59,7 @@ session_start()
                 <h3 id="title">Azioni Disponibili</h3>
                 <div class="azioni">
                     <a href="../index.html"><button class="azione">Crea Tabella Esercizio</button></a>
-                    <a href="../index.html"><button class="azione">Crea Nuovo Test</button></a>
+                    <a href="../webpages/create-table.html"><button class="azione">Crea Nuovo Test</button></a>
                 </div>
     </div>
 </body>

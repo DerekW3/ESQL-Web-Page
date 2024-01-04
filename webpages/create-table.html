@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/signup.css">
+</head>
+<body>
+    <div class="container">
+        <form action="../php/create-test.php" method="post" id="createTable">
+            <div class="container-three">
+                <label for="titolo">Titolo</label>
+                <input type="text" placeholder="Entri Titolo" name="titolo" required>
+                
+                <label for="visualizzaRisposte">Visualizza Risposte</label>
+                <select name="visualizzaRisposte" id="visualizzaRisposte" required>
+                    <option value="Si">Sì</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+        </form>
+
+        <button style="margin-top: 10px;" type="submit" form="createTable" value="Submit">Crea</button>
+    </div>
+</body>
+</html>

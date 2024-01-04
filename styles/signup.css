@@ -87,6 +87,12 @@ button {
     gap: 10px;
 }
 
+.container-three {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .subsection {
     display: flex;
     flex-direction: column;
