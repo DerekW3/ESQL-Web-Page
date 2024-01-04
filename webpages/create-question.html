@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea Quesito</title>
+</head>
+<body>
+    <div class="container">
+        <form action="../php/create-question.php" method="post" id="createQuestion">
+            <div class="container-three">
+                <label for="titoloTest">Titolo Test</label>
+                <input type="text" placeholder="Entri Titolo del Test" name="titoloTest" required>
+
+                <label for="descrizione">Descrizione</label>
+                <input type="text" placeholder="Entri Descrizione" name="descrizione" required>
+                
+                <label for="livelloDifficolta">Livello Difficoltà</label>
+                <select name="livelloDifficolta" id="livelloDifficolta" required>
+                    <option value="Basso">Basso</option>
+                    <option value="Medio">Medio</option>
+                    <option value="Alto">Alto</option>
+                </select>
+            </div>
+        </form>
+
+        <button style="margin-top: 10px;" type="submit" form="createQuestion" value="Submit">Crea</button>
+    </div>
+</body>
+</html>

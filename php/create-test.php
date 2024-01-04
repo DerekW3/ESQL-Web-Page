@@ -40,6 +40,8 @@ session_start();
         echo ("Connessione non riuscita") . $e->getMessage();
         exit();
     }
+
+    header("Location: ../webpages/create-question.html");
     ?>
 </body>
 
