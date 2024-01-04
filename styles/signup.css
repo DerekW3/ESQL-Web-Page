@@ -41,6 +41,13 @@ input {
     border-radius: 10px;
 }
 
+input[type=radio] {
+    min-height: 2vh;
+    height: 2vh;
+    min-width: 6vw;
+    margin: 0px;
+}
+
 select {
     min-width: 100px;
     min-height: 30px;
@@ -96,6 +103,12 @@ button {
 .subsection {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.align-radio {
+    display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
