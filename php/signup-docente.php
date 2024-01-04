@@ -7,6 +7,8 @@
 
 <body>
     <?php
+    require_once 'config.php';
+
     $nome = $_POST["nomeUtente"];
     $cognome = $_POST["cognomeUtente"];
     $email = $_POST["emailUtente"];
