@@ -69,7 +69,7 @@ session_start();
                     "<div class=\"quesito\">
                         <div id=\"info\" style=\"margin-right: auto;\">
                             <h3 style=\"color: var(--text);\">$num)   $livelloDifficolta</h3>
-                            <h3 style=\"color: var(--text);\">$descrizione</h3>
+                            <p style=\"color: var(--text);\">$descrizione</p>
                         </div>
                         <form action=\"./view-quesito.php\" method=post>
                             <input type=\"hidden\" name=page value=\"$num\">
