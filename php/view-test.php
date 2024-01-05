@@ -83,6 +83,11 @@ session_start();
                 exit();
             }
             ?>
+            <h3 id="title">Azioni Disponibili</h3>
+            <div class="azioni">
+                <a href="../webpages/create-question.html"><button class="azione">Crea Nuovo Quesito</button></a>
+                <a href="../webpages/create-question.html"><button class="azione">Visualizza Risposte</button></a>
+            </div>
         </div>
     </div>
 </body>
