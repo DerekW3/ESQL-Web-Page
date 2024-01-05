@@ -41,7 +41,6 @@ session_start();
         exit();
     }
 
-    
     header("Location: ../webpages/create-question.html");
     exit();
     ?>

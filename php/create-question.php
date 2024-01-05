@@ -23,6 +23,14 @@
         echo ("Connessione non riuscita") . $e->getMessage();
         exit();
     }
+
+    try {
+        $sql = "CALL CREA_QUESITO('$livelloDifficolta', '$descrizione', '$titoloTest'";
+        $result = $pdo->query($sql);
+    } catch (PDOException $e) {
+        echo ("Azione Fallito") . $e->getMessage();
+        exit();
+    }
     ?>
 </body>
 

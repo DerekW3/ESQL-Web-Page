@@ -46,7 +46,7 @@ session_start()
                                 <h3 style=\"color: var(--text);\">$titolo</h3>
                                 <h3 style=\"color: var(--text);\">$dataCreazione</h3>
                             </div>
-                            <a href=\"../index.html\"><button id=\"accediTest\">Accedi</button></a>
+                            <a href=\"./view-test.php\"><button id=\"accediTest\">Accedi</button></a>
                         </div>";
                             }
                         }
