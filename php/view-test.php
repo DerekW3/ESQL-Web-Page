@@ -13,7 +13,14 @@ session_start();
 
 <body>
     <div class="header">
-        <a href="./professor-homepage.php"><img id="messaggi" src="https://cdn4.iconfinder.com/data/icons/navigation-40/24/back-1-1024.png" alt="Andare indietro simbolo"></a>
+        <?php
+        $testNum = $_POST['page'];
+        echo
+        "<form action=\"./professor-homepage.php\" method=post>
+                <button type=\"submit\"><img id=\"messaggi\" src=\"https://cdn4.iconfinder.com/data/icons/navigation-40/24/back-1-1024.png\" alt=\"Andare indietro simbolo\"></button>
+        </form>";
+        ?>
+        <!-- <a href="./professor-homepage.php"><img id="messaggi" src="https://cdn4.iconfinder.com/data/icons/navigation-40/24/back-1-1024.png" alt="Andare indietro simbolo"></a> -->
         <h3><?php echo ("Ciao, " . $_COOKIE['name']); ?></h3>
         <a href="./messaggi.php"><img id="messaggi" src="https://cdn3.iconfinder.com/data/icons/email-51/48/53-512.png" alt="Simbolo per messaggi"></a>
     </div>
@@ -57,7 +64,7 @@ session_start();
             echo ("<h3 id=\"title\"> $titoloTest </h3>");
 
             try {
-                $sql = "SELECT * FROM QUESITI WHERE TitoloTest LIKE '$titoloTest'";
+                $sql = "SELECT * FROM QUESITI WHERE TitoloTest LIKE '$titoloTest' ORDER BY Numero";
                 $result = $pdo->query($sql);
 
                 foreach ($result as $row) {
@@ -72,11 +79,12 @@ session_start();
                             <p style=\"color: var(--text);\">$descrizione</p>
                         </div>
                         <form action=\"./view-quesito.php\" method=post>
-                            <input type=\"hidden\" name=page value=\"$num\">
+                            <input type=\"hidden\" name=numeroQuesito value=\"$num\">
+                            <input type=\"hidden\" name=titoloTest value=\"$titoloTest\">
+                            <input type=\"hidden\" name=page value=\"$testNum\">
                             <button type=\"submit\">Accedi</button>
                         </form>
                     </div>";
-                    $index += 1;
                 }
             } catch (PDOException $e) {
                 echo ("Azione fallito") . $e->getMessage();
