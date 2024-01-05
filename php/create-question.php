@@ -31,6 +31,14 @@
         echo ("Azione Fallito") . $e->getMessage();
         exit();
     }
+
+    if ($tipoQuesito == "codice") {
+        header("Location: ./codice.php");
+        exit();
+    } else {
+        header("Location: ./risposta-chiusa.php");
+        exit();
+    }
     ?>
 </body>
 
