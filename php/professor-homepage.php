@@ -43,7 +43,7 @@ session_start()
                                 $dataCreazione = $row['DataCreazione'];
                                 echo
                                 "<div class=\"test\">
-                                    <div class=\"info\">
+                                    <div id=\"info\">
                                         <h3 style=\"color: var(--text);\">$titolo</h3>
                                         <h3 style=\"color: var(--text);\">$dataCreazione</h3>
                                     </div>
