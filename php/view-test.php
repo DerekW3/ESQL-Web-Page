@@ -20,7 +20,6 @@ session_start();
                 <button type=\"submit\"><img id=\"messaggi\" src=\"https://cdn4.iconfinder.com/data/icons/navigation-40/24/back-1-1024.png\" alt=\"Andare indietro simbolo\"></button>
         </form>";
         ?>
-        <!-- <a href="./professor-homepage.php"><img id="messaggi" src="https://cdn4.iconfinder.com/data/icons/navigation-40/24/back-1-1024.png" alt="Andare indietro simbolo"></a> -->
         <h3><?php echo ("Ciao, " . $_COOKIE['name']); ?></h3>
         <a href="./messaggi.php"><img id="messaggi" src="https://cdn3.iconfinder.com/data/icons/email-51/48/53-512.png" alt="Simbolo per messaggi"></a>
     </div>
