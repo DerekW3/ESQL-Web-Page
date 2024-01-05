@@ -31,12 +31,13 @@ session_start()
                     }
 
                     try {
-                        $sql = "SELECT * FROM TEST";
+                        $sql = "SELECT * FROM TEST ORDER BY DataCreazione DESC";
                         $result = $pdo->query($sql);
 
                         if ($result->rowCount() == 0) {
                             echo '<div id="none">Nessun Test Disponibile</div>';
                         } else {
+                            $testNum = 1;
                             foreach ($result as $row) {
                                 $titolo = $row['Titolo'];
                                 $dataCreazione = $row['DataCreazione'];
@@ -46,8 +47,12 @@ session_start()
                                         <h3 style=\"color: var(--text);\">$titolo</h3>
                                         <h3 style=\"color: var(--text);\">$dataCreazione</h3>
                                     </div>
-                                    <a href=\"./view-test.php\"><button id=\"accediTest\">Accedi</button></a>
+                                    <form action=\"./view-test.php\" method=post>
+                                        <input type=\"hidden\" name=page value=\"$testNum\">
+                                        <button type=\"submit\">Accedi</button>
+                                    </form>
                                 </div>";
+                                $testNum += 1;
                             }
                         }
                     } catch (PDOException $e) {
