@@ -33,10 +33,10 @@
     }
 
     if ($tipoQuesito == "codice") {
-        header("Location: ./codice.php");
+        header("Location: ../webpages/create-codice.html");
         exit();
     } else {
-        header("Location: ./risposta-chiusa.php");
+        header("Location: ../webpages/create-risposta-chiusa.php");
         exit();
     }
     ?>
