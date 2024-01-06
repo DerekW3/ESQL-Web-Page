@@ -36,14 +36,14 @@ session_start();
     }
 
     try {
-        $sql = "SELECT MAX(Numero) AS numeroQuesito FROM QUESITI WHERE TitoloTest LIKE '$titoloTest'";
+        $sql = "SELECT COUNT(*) AS numeroQuesito FROM QUESITI WHERE TitoloTest LIKE '$titoloTest'";
         $result = $pdo->query($sql);
 
         foreach ($result as $row) {
             $numeroQuesito = $row['numeroQuesito'];
         }
 
-        setcookie("numQuesito", $name, time() + 3.6e6);
+        setcookie("numeroQuesito", $numeroQuesito, time() + 3.6e6);
     } catch (PDOException $e) {
         echo ("Azione Fallito") . $e->getMessage();
         exit();
