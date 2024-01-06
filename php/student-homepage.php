@@ -20,6 +20,15 @@ session_start()
         <h3 id="testTitle">Test Disponibili<h3>
                 <div class="tests">
                     <?php
+                    if (isset($_COOKIE['titoloTest'])) {
+                        setcookie('titoloTest', "", time() - 3600);
+                    }
+                    if (isset($_COOKIE['numQuesito'])) {
+                        setcookie('numQuesito', "", time() - 3600);
+                    }
+                    if (isset($_COOKIE['page'])) {
+                        setcookie('page', "", time() - 3600);
+                    }
                     try {
                         $pdo = new PDO("mysql:host=localhost; dbname=ESQL", $_SESSION['email'], $_SESSION['password']);
 
