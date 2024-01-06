@@ -24,34 +24,61 @@ session_start();
         <h3><?php echo ("Ciao, " . $_COOKIE['name']); ?></h3>
         <a href="./messaggi.php"><img id="messaggi" src="https://cdn3.iconfinder.com/data/icons/email-51/48/53-512.png" alt="Simbolo per messaggi"></a>
     </div>
-    <?php
-    $titoloTest = $_POST['titoloTest'];
-    $numeroQuesito = $_POST['numeroQuesito'];
+    <div class="content">
+        <div class="quesiti">
+            <?php
+            $titoloTest = $_POST['titoloTest'];
+            $numeroQuesito = $_POST['numeroQuesito'];
 
-    try {
-        $pdo = new PDO("mysql:host=localhost; dbname=ESQL", $_SESSION['email'], $_SESSION['password']);
+            try {
+                $pdo = new PDO("mysql:host=localhost; dbname=ESQL", $_SESSION['email'], $_SESSION['password']);
 
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $pdo->exec('SET NAMES "utf8"');
-    } catch (PDOException $e) {
-        echo ("Connessione non riuscita") . $e->getMessage();
-        exit();
-    }
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $pdo->exec('SET NAMES "utf8"');
+            } catch (PDOException $e) {
+                echo ("Connessione non riuscita") . $e->getMessage();
+                exit();
+            }
 
-    try {
-        $sql = "SELECT * FROM CODICE WHERE NumeroQuesito = '$numeroQuesito' AND TitoloTest LIKE '$titoloTest'";
-        $result = $pdo->query($sql);
+            try {
+                $sql = "SELECT * FROM CODICE WHERE NumeroQuesito = '$numeroQuesito' AND TitoloTest LIKE '$titoloTest'";
+                $result = $pdo->query($sql);
 
-        if ($result->rowCount() == 0) {
-            $tipoQuesito = "ripostaChiusa";
-        } else {
-            $tipoQuesito = "codice";
-        }
-    } catch (PDOException $e) {
-        echo ("Azione fallito") . $e->getMessage();
-        exit();
-    }
-    ?>
+                if ($result->rowCount() == 0) {
+                    $tipoQuesito = "ripostaChiusa";
+                } else {
+                    $tipoQuesito = "codice";
+                }
+            } catch (PDOException $e) {
+                echo ("Azione fallito") . $e->getMessage();
+                exit();
+            }
+
+            try {
+                if ($tipoQuesito == "codice") {
+                    $sql = "SELECT * FROM CODICE WHERE NumeroQuesito = '$numeroQuesito' AND TitoloTest LIKE '$titoloTest' ORDER BY NumeroSoluzione ASC";
+                    $result = $pdo->query($sql);
+
+                    foreach ($result as $row) {
+                        $numeroSoluzione = $row['NumeroSoluzione'];
+                        $soluzione = $row['Soluzione'];
+
+                        echo
+                        "<div class=\"quesito\">
+                            <div id=\"info\" style=\"margin-right: auto;\">
+                                <h3 style=\"color: var(--text);\">Soluzione #$numeroSoluzione</h3>
+                                <p style=\"color: var(--text);\">$soluzione</p>
+                            </div>
+                        </div>";
+                    }
+                }
+            } catch (PDOException $e) {
+                echo ("Azione fallita") . $e->getMessage();
+                exit();
+            }
+            ?>
+        </div>
+    </div>
 </body>
 
 </html>
