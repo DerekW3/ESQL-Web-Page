@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,13 +27,13 @@
         exit();
     }
 
-    try {
-        $sql = "CALL CREA_QUESITO('$livelloDifficolta', '$descrizione', '$titoloTest'";
-        $result = $pdo->query($sql);
-    } catch (PDOException $e) {
-        echo ("Azione Fallito") . $e->getMessage();
-        exit();
-    }
+    // try {
+    //     $sql = "CALL CREA_QUESITO('$livelloDifficolta', '$descrizione', '$titoloTest'";
+    //     $result = $pdo->query($sql);
+    // } catch (PDOException $e) {
+    //     echo ("Azione Fallito") . $e->getMessage();
+    //     exit();
+    // }
 
     if ($tipoQuesito == "codice") {
         header("Location: ../webpages/create-codice.html");
