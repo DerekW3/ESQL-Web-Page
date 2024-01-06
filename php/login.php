@@ -40,9 +40,11 @@ session_start();
         $sql = "SELECT * FROM STUDENTI WHERE EmailUtente = '$email'";
         $result = $pdo->query($sql);
         if ($result->rowCount() > 0) {
+            $_SESSION['tipoUtente'] = "studente";
             header("Location: ./student-homepage.php");
             exit();
         } else {
+            $_SESSION['tipoUtente'] = "docente";
             header("Location: ./professor-homepage.php");
             exit();
         }
