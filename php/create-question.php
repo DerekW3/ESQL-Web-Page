@@ -52,7 +52,7 @@ session_start();
         header("Location: ../webpages/create-codice.html");
         exit();
     } else {
-        header("Location: ../webpages/create-risposta-chiusa.php");
+        header("Location: ../webpages/create-risposta-chiusa.html");
         exit();
     }
     ?>

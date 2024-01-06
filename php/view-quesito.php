@@ -71,6 +71,22 @@ session_start();
                             </div>
                         </div>";
                     }
+                } else {
+                    $sql = "SELECT * FROM RISPOSTA_CHIUSA WHERE NumeroQuesito = '$numeroQuesito' AND TitoloTest LIKE '$titoloTest' ORDER BY NumeroOpzione ASC";
+                    $result = $pdo->query($sql);
+
+                    foreach ($result as $row) {
+                        $numeroOpzione = $row['NumeroOpzione'];
+                        $testo = $row['Testo'];
+
+                        echo
+                        "<div class=\"quesito\">
+                            <div id=\"info\" style=\"margin-right: auto;\">
+                                <h3 style=\"color: var(--text);\">Opzione #$numeroOpzione</h3>
+                                <p style=\"color: var(--text);\">$testo</p>
+                            </div>
+                        </div>";
+                    }
                 }
             } catch (PDOException $e) {
                 echo ("Azione fallita") . $e->getMessage();
