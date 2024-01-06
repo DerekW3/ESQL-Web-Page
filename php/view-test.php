@@ -14,7 +14,12 @@ session_start();
 <body>
     <div class="header">
         <?php
-        $testNum = $_POST['page'];
+        if (isset($_COOKIE['page'])) {
+            $testNum = $_COOKIE['page'];
+        } else {
+            $testNum = $_POST['page'];
+            setcookie('page', $testNum, time() + 3.6e6);
+        }
         echo
         "<form action=\"./professor-homepage.php\" method=post>
                 <button type=\"submit\"><img id=\"messaggi\" src=\"https://cdn4.iconfinder.com/data/icons/navigation-40/24/back-1-1024.png\" alt=\"Andare indietro simbolo\"></button>
@@ -30,7 +35,13 @@ session_start();
                 setcookie('numQuesito', "", time() - 3600);
             }
 
-            $testNum = $_POST['page'];
+            if (isset($_COOKIE['page'])) {
+                $testNum = $_COOKIE['page'];
+            } else {
+                $testNum = $_POST['page'];
+                setcookie('page', $testNum, time() + 3.6e6);
+            }
+
             $email = $_SESSION['email'];
 
             try {
