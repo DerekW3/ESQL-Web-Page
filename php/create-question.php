@@ -12,7 +12,7 @@ session_start();
 
 <body>
     <?php
-    $titoloTest = $_POST['titoloTest'];
+    $titoloTest = $_COOKIE['titoloTest'];
     $descrizione = $_POST['descrizione'];
     $livelloDifficolta = $_POST['livelloDifficolta'];
     $tipoQuesito = $_POST['tipoQuesito'];
@@ -27,14 +27,27 @@ session_start();
         exit();
     }
 
-    // try {
-    //     $sql = "CALL CREA_QUESITO('$livelloDifficolta', '$descrizione', '$titoloTest'";
-    //     $result = $pdo->query($sql);
-    // } catch (PDOException $e) {
-    //     echo ("Azione Fallito") . $e->getMessage();
-    //     exit();
-    // }
+    try {
+        $sql = "CALL CREA_QUESITO('$livelloDifficolta', '$descrizione', '$titoloTest')";
+        $result = $pdo->query($sql);
+    } catch (PDOException $e) {
+        echo ("Azione Fallito") . $e->getMessage();
+        exit();
+    }
 
+    try {
+        $sql = "SELECT MAX(Numero) AS numeroQuesito FROM QUESITI WHERE TitoloTest LIKE '$titoloTest'";
+        $result = $pdo->query($sql);
+
+        foreach ($result as $row) {
+            $numeroQuesito = $row['numeroQuesito'];
+        }
+
+        setcookie("numQuesito", $name, time() + 3.6e6);
+    } catch (PDOException $e) {
+        echo ("Azione Fallito") . $e->getMessage();
+        exit();
+    }
     if ($tipoQuesito == "codice") {
         header("Location: ../webpages/create-codice.html");
         exit();

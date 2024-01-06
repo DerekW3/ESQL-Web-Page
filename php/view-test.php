@@ -61,6 +61,7 @@ session_start();
 
             $titoloTest = $test['Titolo'];
             echo ("<h3 id=\"title\"> $titoloTest </h3>");
+            setcookie("titoloTest", $titoloTest, time() + 3.6e6);
 
             try {
                 $sql = "SELECT * FROM QUESITI WHERE TitoloTest LIKE '$titoloTest' ORDER BY Numero";
