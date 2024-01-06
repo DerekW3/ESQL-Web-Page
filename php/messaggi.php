@@ -46,6 +46,41 @@ session_start();
                 exit();
             }
 
+            if ($tipoUtente == "studente") {
+                $sql = "SELECT * FROM MESSAGGI WHERE Recipiente LIKE 'all'";
+                $result = $pdo->query($sql);
+
+                foreach ($result as $row) {
+                    $titolo = $row['Titolo'];
+                    $dataInserimento = $row['DataInserimento'];
+                    $testo = $row['Testo'];
+
+                    echo
+                    "<div class=\"quesito\">
+                        <div id=\"info\" style=\"margin-right: auto;\">
+                            <h3 style=\"color: var(--text);\">$titolo, $dataInserimento</h3>
+                            <p style=\"color: var(--text);\">$testo</p>
+                        </div>
+                    </div>";
+                }
+            } else {
+                $sql = "SELECT * FROM MESSAGGI WHERE Recipiente LIKE '$email'";
+                $result = $pdo->query($sql);
+
+                foreach ($result as $row) {
+                    $titolo = $row['Titolo'];
+                    $dataInserimento = $row['DataInserimento'];
+                    $testo = $row['Testo'];
+
+                    echo
+                    "<div class=\"quesito\">
+                        <div id=\"info\" style=\"margin-right: auto;\">
+                            <h3 style=\"color: var(--text);\">$titolo, $dataInserimento</h3>
+                            <p style=\"color: var(--text);\">$testo</p>
+                        </div>
+                    </div>";
+                }
+            }
             ?>
         </div>
     </div>
