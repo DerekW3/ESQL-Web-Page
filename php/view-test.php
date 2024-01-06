@@ -26,6 +26,10 @@ session_start();
     <div class="content">
         <div class="quesiti">
             <?php
+            if (isset($_COOKIE['numQuesito'])) {
+                setcookie('numQuesito', "", time() - 3600);
+            }
+
             $testNum = $_POST['page'];
             $email = $_SESSION['email'];
 
