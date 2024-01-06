@@ -42,6 +42,7 @@ session_start();
                 setcookie('page', $testNum, time() + 3.6e6);
             }
 
+            $tipoUtente = $_SESSION['tipoUtente'];
             $email = $_SESSION['email'];
 
             try {
@@ -87,19 +88,38 @@ session_start();
                     $descrizione = $row['Descrizione'];
                     $num = $row['Numero'];
 
-                    echo
-                    "<div class=\"quesito\">
-                        <div id=\"info\" style=\"margin-right: auto;\">
-                            <h3 style=\"color: var(--text);\">$num)   $livelloDifficolta</h3>
-                            <p style=\"color: var(--text);\">$descrizione</p>
-                        </div>
-                        <form action=\"./view-quesito.php\" method=post>
-                            <input type=\"hidden\" name=numeroQuesito value=\"$num\">
-                            <input type=\"hidden\" name=titoloTest value=\"$titoloTest\">
-                            <input type=\"hidden\" name=page value=\"$testNum\">
-                            <button type=\"submit\">Accedi</button>
-                        </form>
-                    </div>";
+                    if ($tipoUtente == "studente") {
+                        echo
+                        "<div class=\"quesito\">
+                            <div id=\"info\" style=\"margin-right: auto;\">
+                                <h3 style=\"color: var(--text);\">$num)   $livelloDifficolta</h3>
+                                <p style=\"color: var(--text);\">$descrizione</p>
+                            </div>
+                            <form action=\"./view-quesito.php\" method=post>
+                                <input type=\"hidden\" name=numeroQuesito value=\"$num\">
+                                <input type=\"hidden\" name=titoloTest value=\"$titoloTest\">
+                                <input type=\"hidden\" name=page value=\"$testNum\">
+                                <button type=\"submit\">Accedi</button>
+                            </form>
+                        </div>";
+                    } else {
+                        echo
+                        "<div class=\"quesito\">
+                            <div id=\"info\" style=\"margin-right: auto;\">
+                                <h3 style=\"color: var(--text);\">$num)   $livelloDifficolta</h3>
+                                <p style=\"color: var(--text);\">$descrizione</p>
+                            </div>
+                            <form style=\"margin-right: 10px;\" action=\"./elimina-quesito.php\" method=post>
+                                <button type=\"submit\">Elimina</button>
+                            </form>
+                            <form action=\"./view-quesito.php\" method=post>
+                                <input type=\"hidden\" name=numeroQuesito value=\"$num\">
+                                <input type=\"hidden\" name=titoloTest value=\"$titoloTest\">
+                                <input type=\"hidden\" name=page value=\"$testNum\">
+                                <button type=\"submit\">Accedi</button>
+                            </form>
+                        </div>";
+                    }
                 }
             } catch (PDOException $e) {
                 echo ("Azione fallito") . $e->getMessage();
