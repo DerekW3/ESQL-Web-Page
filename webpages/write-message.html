@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea Codice</title>
+    <link rel="stylesheet" href="../styles/signup.css">
+</head>
+<body>
+    <div class="container">
+        <form action="../php/send-message.php" method="post" id="createQuestion">
+            <div class="container-three">
+                <label for="titolo">Titolo</label>
+                <input type="text" placeholder="Entri Titolo" name="titolo" required>
+
+                <label for="testo">Testo</label>
+                <input type="text" placeholder="Entri Testo" name="testo" required>
+
+                <label for="recipiente">Recipiente</label>
+                <input type="text" placeholder="Entri Recipiente" name="recipiente" required>
+
+                <label for="test">Titolo Test</label>
+                <input type="text" placeholder="Entri Titolo Test" name="test" required>
+            </div>
+        </form>
+
+        <button style="margin-top: 10px;" type="submit" form="createQuestion" value="Submit">Manda</button>
+    </div>
+</body>
+</html>
