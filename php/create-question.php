@@ -16,6 +16,7 @@ session_start();
     $descrizione = $_POST['descrizione'];
     $livelloDifficolta = $_POST['livelloDifficolta'];
     $tipoQuesito = $_POST['tipoQuesito'];
+    $tabellaEsercizio = $_POST['tabellaEsercizio'];
 
     try {
         $pdo = new PDO("mysql:host=localhost; dbname=ESQL", $_SESSION['email'], $_SESSION['password']);
@@ -28,7 +29,20 @@ session_start();
     }
 
     try {
-        $sql = "CALL CREA_QUESITO('$livelloDifficolta', '$descrizione', '$titoloTest')";
+        $sql = "SELECT * FROM '$tabellaEsercizio'";
+        $result = $pdo->query($sql);
+
+        if ($result->rowCount() == 0) {
+            header("Location: ../webpages/create-question.html");
+            exit();
+        }
+    } catch (PDOException $e) {
+        echo ("FAILED") . $e->getMessage();
+        exit();
+    }
+
+    try {
+        $sql = "CALL CREA_QUESITO('$livelloDifficolta', '$descrizione', '$titoloTest', '$tabellaEsercizio')";
         $result = $pdo->query($sql);
     } catch (PDOException $e) {
         echo ("Azione Fallito") . $e->getMessage();

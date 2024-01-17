@@ -15,6 +15,13 @@ session_start();
     $titoloTest = $_COOKIE['titoloTest'];
     $numeroQuesito = $_COOKIE['numeroQuesito'];
     $testo = $_POST['testo'];
+    $soluzione = $_POST['soluzione'];
+
+    if ($soluzione == "si") {
+        $soluzione = 1;
+    } else {
+        $soluzione = 0;
+    }
 
     try {
         $pdo = new PDO("mysql:host=localhost; dbname=ESQL", $_SESSION['email'], $_SESSION['password']);
@@ -27,7 +34,7 @@ session_start();
     }
 
     try {
-        $sql = "CALL CREA_RISPOSTA_CHIUSA('$numeroQuesito', '$titoloTest', '$testo')";
+        $sql = "CALL CREA_RISPOSTA_CHIUSA('$numeroQuesito', '$titoloTest', '$testo', '$soluzione')";
         $result = $pdo->query($sql);
     } catch (PDOException $e) {
         echo ("Azione Fallito") . $e->getMessage();
