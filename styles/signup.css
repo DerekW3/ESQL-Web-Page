@@ -75,6 +75,11 @@ button {
     background-color: var(--primary);
 }
 
+h3 {
+    font-size: 20px;
+    color: var(--text);
+}
+
 .container {
     min-width: 200px;
     min-height: 200px;
