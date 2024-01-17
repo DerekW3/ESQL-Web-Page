@@ -12,18 +12,18 @@ session_start();
 
 <body>
     <?php
+    require_once '../config.php';
+
     $titoloTest = $_COOKIE['titoloTest'];
     $page = $_COOKIE['page'];
     $numeroQuesito = $_COOKIE['numeroQuesito'];
     $tipoQuesito = $_COOKIE['tipoQuesito'];
     $index = $_POST['index'];
 
-    echo ($numeroQuesito . " " . $tipoQuesito);
-
     $email = $_SESSION['email'];
 
     try {
-        $pdo = new PDO("mysql:host=localhost; dbname=ESQL", $_SESSION['email'], $_SESSION['password']);
+        $pdo = new PDO("mysql:host=$db_host; dbname=$db_name", $db_username, $db_password);
 
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $pdo->exec('SET NAMES "utf8"');
