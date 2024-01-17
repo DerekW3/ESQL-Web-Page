@@ -16,8 +16,6 @@ session_start();
 
     $email = $_SESSION['email'];
 
-    $nome = $email . "_" . $nome;
-
     try {
         $pdo = new PDO("mysql:host=localhost; dbname=ESQL", $_SESSION['email'], $_SESSION['password']);
 
@@ -32,13 +30,15 @@ session_start();
         $sql = "CALL CREA_ESERCIZIO('$nome', '$email')";
         $result = $pdo->query($sql);
 
-        $sql = "CREATE TABLE '$nome' ( 
-                    EmailUtente VARCHAR(100) ) ENGINE = \"InnoDB\" ";
+        $sql = "CREATE TABLE " . $nome . " ( EmailUtente VARCHAR(100) ) ENGINE = InnoDB";
         $result = $pdo->query($sql);
     } catch (PDOException $e) {
         echo ("Fallito") . $e->getMessage();
         exit();
     }
+
+    header("Location: ../php/professor-homepage.php");
+    exit();
     ?>
 </body>
 
