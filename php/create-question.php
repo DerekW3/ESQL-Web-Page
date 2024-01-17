@@ -29,7 +29,7 @@ session_start();
     }
 
     try {
-        $sql = "SELECT * FROM '$tabellaEsercizio'";
+        $sql = "SHOW TABLES LIKE '$tabellaEsercizio'";
         $result = $pdo->query($sql);
 
         if ($result->rowCount() == 0) {
