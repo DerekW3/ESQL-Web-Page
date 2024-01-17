@@ -27,7 +27,7 @@ session_start();
         }
         echo
         "<form style=\"min-width: 10vw;\"action=\"../webpages/write-message.html\" method=post>
-            <button type=\"submit\"><img id=\"messaggi\" src=\"https://cdn4.iconfinder.com/data/icons/navigation-40/24/back-1-1024.png\" alt=\"Manda messaggio simbolo\"></button>
+            <button type=\"submit\"><img id=\"messaggi\" src=\"https://cdn4.iconfinder.com/data/icons/communication-163/32/send-1024.png\" alt=\"Manda messaggio simbolo\"></button>
         </form>";
         ?>
         <a href="./messaggi.php"><img id="messaggi" src="https://cdn3.iconfinder.com/data/icons/email-51/48/53-512.png" alt="Simbolo per messaggi"></a>
