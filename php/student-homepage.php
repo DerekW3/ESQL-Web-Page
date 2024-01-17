@@ -56,6 +56,10 @@ session_start()
                                         <h3 style=\"color: var(--text);\">$titolo</h3>
                                         <h3 style=\"color: var(--text);\">$dataCreazione</h3>
                                     </div>
+                                    <form style=\"margin-left: auto; margin-right: 10px;\" action=\"./take-test.php\" method=post>
+                                        <input type=\"hidden\" name=page value=\"$testNum\">
+                                        <button type=\"submit\">Prendi Test</button>
+                                    </form>
                                     <form action=\"./view-test.php\" method=post>
                                         <input type=\"hidden\" name=page value=\"$testNum\">
                                         <button type=\"submit\">Accedi</button>
