@@ -109,10 +109,6 @@ session_start();
                                 <h3 style=\"color: var(--text);\">$num)   $livelloDifficolta</h3>
                                 <p style=\"color: var(--text);\">$descrizione</p>
                             </div>
-                            <form style=\"margin-right: 10px;\" action=\"./elimina-quesito.php\" method=post>
-                                <input type=\"hidden\" name=numeroQuesito value=\"$num\">
-                                <button type=\"submit\">Elimina</button>
-                            </form>
                             <form action=\"./view-quesito.php\" method=post>
                                 <input type=\"hidden\" name=numeroQuesito value=\"$num\">
                                 <input type=\"hidden\" name=titoloTest value=\"$titoloTest\">
