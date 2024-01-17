@@ -15,6 +15,17 @@ session_start();
     <div class="header">
         <?php
         $testNum = $_POST['page'];
+        if ($_SESSION['tipoUtente'] == 'studente') {
+            echo
+            "<form action=\"./student-homepage.php\" method=post>
+                <button type=\"submit\"><img id=\"messaggi\" src=\"https://cdn4.iconfinder.com/data/icons/navigation-40/24/back-1-1024.png\" alt=\"Andare indietro simbolo\"></button>
+            </form>";
+        } else {
+            echo
+            "<form action=\"./professor-homepage.php\" method=post>
+                <button type=\"submit\"><img id=\"messaggi\" src=\"https://cdn4.iconfinder.com/data/icons/navigation-40/24/back-1-1024.png\" alt=\"Andare indietro simbolo\"></button>
+            </form>";
+        }
         echo
         "<form action=\"./view-test.php\" method=post>
                 <input type=\"hidden\" name=page value=\"$testNum\">
