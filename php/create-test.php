@@ -17,7 +17,7 @@ session_start();
     $visualizzaRisposte = $_POST["visualizzaRisposte"];
     $email = $_SESSION['email'];
 
-    if ($visualizzaRisposte == "Sì") {
+    if ($visualizzaRisposte == "Si") {
         $visualizzaRisposte = 1;
     } else {
         $visualizzaRisposte = 0;
@@ -41,7 +41,7 @@ session_start();
         exit();
     }
 
-    header("Location: ../webpages/create-question.html");
+    header("Location: ./professor-homepage.php");
     exit();
     ?>
 </body>
