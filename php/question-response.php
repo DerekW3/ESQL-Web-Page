@@ -18,11 +18,8 @@ session_start();
         $titoloTest = $_POST['titoloTest'];
         $testNum = $_POST['page'];
 
-        if (isset($_COOKIE['page'])) {
-            $testNum = $_COOKIE['page'];
-        } else {
-            $testNum = $_POST['page'];
-            setcookie('page', $testNum, time() + 3.6e6);
+        if (!isset($_COOKIE['numeroQuesito'])) {
+            setcookie('numeroQuesito', $numeroQuesito, time() + 3.6e6);
         }
 
         $email = $_SESSION['email'];
@@ -51,6 +48,10 @@ session_start();
                 $sql2 = "SELECT * FROM RISPOSTA_CHIUSA WHERE TitoloTest LIKE '$titoloTest' AND NumeroQuesito = '$numeroQuesito'";
                 $result2 = $pdo->query($sql2);
             }
+
+            if (!isset($_COOKIE['tipoQuesito'])) {
+                setcookie('tipoQuesito', $tipoQuesito, time() + 3.6e6);
+            }
         } catch (PDOException $e) {
             echo ("Fallito") . $e->getMessage();
             exit();
@@ -69,10 +70,10 @@ session_start();
                         <textarea id=\"soluzione\" name=\"soluzione\" rows=\"5\" cols=\"80\" placeholder=\"Inserisci Codice\"></textarea>";
                     } else {
                         $index = 1;
-                        foreach ($result as $row) {
-                            $descrizione = $row['Descrizione'];
+                        foreach ($result2 as $row) {
+                            $descrizione = $row['Testo'];
                             echo
-                            "<input type=\"radio\" id=\"$index\" name=\"$index\" value=\"$index\" required>
+                            "<input type=\"radio\" id=\"$index\" name=\"index\" value=\"$index\" required>
                             <label for=\"$index\">$descrizione</label>";
                             $index += 1;
                         }
