@@ -27,6 +27,7 @@ session_start();
     }
 
     try {
+        echo $numeroQuesito;
         $sql = "CALL CREA_CODICE('$numeroQuesito', '$titoloTest', '$soluzione')";
         $result = $pdo->query($sql);
     } catch (PDOException $e) {

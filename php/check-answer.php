@@ -19,6 +19,7 @@ session_start();
     $numeroQuesito = $_COOKIE['numeroQuesito'];
     $tipoQuesito = $_COOKIE['tipoQuesito'];
     $index = $_POST['index'];
+    $soluzione = $_POST['soluzione'];
 
     $email = $_SESSION['email'];
 
@@ -34,8 +35,21 @@ session_start();
 
     try {
         if ($tipoQuesito == 0) {
-            $sql = "SELECT Soluzione FROM CODICE WHERE NumeroQuesito = '$numeroQuesito' AND TitoloTest LIKE '$titoloTest'";
+            $sql = "SELECT * FROM CODICE WHERE NumeroQuesito = '$numeroQuesito' AND TitoloTest LIKE '$titoloTest'";
             $result = $pdo->query($sql);
+
+            $soluzione = $result['Soluzione'];
+            $correctResult = $pdo->query($soluzione);
+
+            $inputResult = $pdo->query($soluzione);
+
+            if ($correctResult == $inputResult) {
+                $esito = 1;
+            } else {
+                $esito = 0;
+            }
+
+            echo ($esito);
         } else {
             $sql = "SELECT * FROM RISPOSTA_CHIUSA WHERE NumeroQuesito = '$numeroQuesito' AND TitoloTest LIKE '$titoloTest' AND NumeroOpzione = '$index'";
             $result = $pdo->query($sql);

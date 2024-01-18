@@ -60,7 +60,7 @@ session_start()
                                         <h3 style=\"color: var(--text);\">$dataCreazione</h3>
                                     </div>
 
-                                    <form action=\"./add-attribute.php\" method=post>
+                                    <form action=\"./view-test.php\" method=post>
                                         <input type=\"hidden\" name=page value=\"$testNum\">
                                         <button type=\"submit\">Accedi</button>
                                     </form>
@@ -91,31 +91,31 @@ session_start()
                     $dataCreazioneTabella = $tabella['DataCreazione'];
                     echo
                     "<div class=\"test\">
-                                    <div id=\"info\">
-                                        <h3 style=\"color: var(--text);\">$nome</h3>
-                                        <h3 style=\"color: var(--text);\">$dataCreazioneTabella</h3>
-                                    </div>
-                                    
-                                    <form action=\"./foreign-key.php\" method=post>
-                                        <input type=\"hidden\" name=\"nomeTabella\" value=\"$nome\">
-                                        <button type=\"submit\">Aggiungi Foreign Key</button>
-                                    </form>
+                        <div id=\"info\">
+                            <h3 style=\"color: var(--text);\">$nome</h3>
+                            <h3 style=\"color: var(--text);\">$dataCreazioneTabella</h3>
+                        </div>
+                        
+                        <form action=\"./foreign-key.php\" method=post>
+                            <input type=\"hidden\" name=\"nomeTabella\" value=\"$nome\">
+                            <button type=\"submit\">Aggiungi Foreign Key</button>
+                        </form>
 
-                                    <form action=\"./primary-key.php\" method=post>
-                                        <input type=\"hidden\" name=\"nomeTabella\" value=\"$nome\">
-                                        <button type=\"submit\">Aggiungi Primary Key</button>
-                                    </form>
+                        <form action=\"./primary-key.php\" method=post>
+                            <input type=\"hidden\" name=\"nomeTabella\" value=\"$nome\">
+                            <button type=\"submit\">Aggiungi Primary Key</button>
+                        </form>
 
-                                    <form action=\"./fill.php\" method=post>
-                                        <input type=\"hidden\" name=\"nomeTabella\" value=\"$nome\">
-                                        <button type=\"submit\">Riempi</button>
-                                    </form>
+                        <form action=\"./fill.php\" method=post>
+                            <input type=\"hidden\" name=\"nomeTabella\" value=\"$nome\">
+                            <button type=\"submit\">Riempi</button>
+                        </form>
 
-                                    <form action=\"./add-attribute.php\" method=post>
-                                        <input type=\"hidden\" name=\"nomeTabella\" value=\"$nome\">
-                                        <button type=\"submit\">Aggiungi</button>
-                                    </form>
-                                </div>";
+                        <form action=\"./add-attribute.php\" method=post>
+                            <input type=\"hidden\" name=\"nomeTabella\" value=\"$nome\">
+                            <button type=\"submit\">Aggiungi</button>
+                        </form>
+                    </div>";
                 }
             } catch (PDOException $e) {
                 echo ("Fallito") . $e->getMessage();
