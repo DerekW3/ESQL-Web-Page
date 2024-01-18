@@ -30,8 +30,13 @@ session_start();
     }
 
     try {
-        $sql = "ALTER TABLE " . $nomeTabella . " ADD COLUMN " . $nome . " " . $tipoData;
-        $result = $pdo->query($sql);
+        if (empty($length)) {
+            $sql = "ALTER TABLE " . $nomeTabella . " ADD COLUMN " . $nome . " " . $tipoData;
+            $result = $pdo->query($sql);
+        } else {
+            $sql = "ALTER TABLE " . $nomeTabella . " ADD COLUMN " . $nome . " " . $tipoData . "(" . $length . ")";
+            $result = $pdo->query($sql);
+        }
     } catch (PDOException $e) {
         echo ("Fallito") . $e->getMessage();
         exit();

@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crea Primary Key</title>
+    <title>Crea Foreign Key</title>
     <link rel="stylesheet" href="../styles/signup.css">
 </head>
 
@@ -17,7 +17,9 @@ session_start();
 
     if (isset($_POST['SubmitButton'])) {
         $email = $_SESSION['email'];
-        $values = $_POST['values'];
+        $attributes = $_POST['attributes'];
+        $tabella = $_POST['tabella'];
+        $altri = $_POST['altri'];
 
         try {
             $pdo = new PDO("mysql:host=localhost; dbname=ESQL", $_SESSION['email'], $_SESSION['password']);
@@ -30,13 +32,8 @@ session_start();
         }
 
         try {
-            try {
-                $sql = "ALTER TABLE " . $nome . " DROP PRIMARY KEY";
-                $result = $pdo->query($sql);
-            } catch (PDOException) {
-            }
-
-            $sql = "ALTER TABLE " . $nome . " ADD PRIMARY KEY (" . $values . ")";
+            $sql = "ALTER TABLE " . $nome . " ADD CONSTRAINT FOREIGN KEY (" . $attributes . ") REFERENCES " . $tabella . "(" . $altri . ")";
+            echo $sql;
             $result = $pdo->query($sql);
         } catch (PDOException $e) {
             echo ("Fallito") . $e->getMessage();
@@ -50,8 +47,16 @@ session_start();
     <div class="container">
         <form action="" method="post" id="addPrimary">
             <div class="container-three">
-                <label for="primaryKey">Primary Key</label>
-                <input type="text" name="values" required>
+                <label for="primaryKey">Attributes</label>
+                <input type="text" name="attributes" required>
+
+                <label for="references">References</label>
+
+                <label for="tabella">Tabella</label>
+                <input type="text" name="tabella" required>
+
+                <label for="altri">Altri Attributi</label>
+                <input type="text" name="altri" required>
             </div>
 
             <input type="hidden" name="nomeTabella" value=<?php echo $nome; ?>>
