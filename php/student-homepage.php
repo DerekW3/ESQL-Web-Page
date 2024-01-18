@@ -14,6 +14,7 @@ session_start()
 <body>
     <div class="header">
         <h3><?php echo ("Ciao, " . $_COOKIE['name']); ?></h3>
+        <a href="./classifiche.php"><img id="messaggi" src="https://cdn1.iconfinder.com/data/icons/iconoir-vol-3/24/leaderboard-star-1024.png"></a>
         <a href="./messaggi.php"><img id="messaggi" src="https://cdn3.iconfinder.com/data/icons/email-51/48/53-512.png" alt="Simbolo per messaggi"></a>
     </div>
     <div class="content">
