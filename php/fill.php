@@ -36,8 +36,12 @@ session_start();
             foreach ($result as $attribute) {
                 $attribute = $attribute['Field'];
                 array_push($attributes, $attribute);
-                $value = $_POST[$attribute];
-                array_push($values, $value);
+                if ($attribute == "SKIP_ATTRIBUTE") {
+                    array_push($values, 0);
+                } else {
+                    $value = $_POST[$attribute];
+                    array_push($values, $value);
+                }
             }
             $first = $nome . "(" . implode(", ", $attributes) . ")";
             $second = "('" . implode("', '", $values) . "')";

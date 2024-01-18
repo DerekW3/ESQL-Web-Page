@@ -102,12 +102,6 @@ session_start();
                                 <h3 style=\"color: var(--text);\">$num)   $livelloDifficolta</h3>
                                 <p style=\"color: var(--text);\">$descrizione</p>
                             </div>
-                            <form action=\"./view-quesito.php\" method=post>
-                                <input type=\"hidden\" name=numeroQuesito value=\"$num\">
-                                <input type=\"hidden\" name=titoloTest value=\"$titoloTest\">
-                                <input type=\"hidden\" name=page value=\"$testNum\">
-                                <button type=\"submit\">Accedi</button>
-                            </form>
                         </div>";
                     } else {
                         echo
@@ -130,13 +124,18 @@ session_start();
                 exit();
             }
             ?>
-            <h3 id="title">Azioni Disponibili</h3>
-            <div class="azioni">
-                <a href="../webpages/create-question.html"><button class="azione">Crea Nuovo Quesito</button></a>
-                <form action="./visualizza.php" method="post">
-                    <button class="azione" type="submit">Visualizza Risposte</button>
-                </form>
-            </div>
+            <?php
+            if ($tipoUtente != "studente") {
+                echo
+                "<h3 id=\"title\">Azioni Disponibili</h3>
+                    <div class=\"azioni\">
+                        <a href=\"../webpages/create-question.html\"><button class=\"azione\">Crea Nuovo Quesito</button></a>
+                        <form action=\"./visualizza.php\" method=\"post\">
+                            <button class=\"azione\" type=\"submit\">Visualizza Risposte</button>
+                        </form>
+                    </div>";
+            }
+            ?>
         </div>
     </div>
 </body>
