@@ -13,13 +13,6 @@ session_start();
 
 <body>
     <?php
-    require '../vendor/autoload.php';
-
-    $mongoClient = new MongoDB\Client('mongodb://127.0.0.1:27017');
-
-    $database = $mongoClient->selectDatabase("ESQL");
-    $collection = $database->selectCollection("Logs");
-
     $titolo = $_POST["titolo"];
     $visualizzaRisposte = $_POST["visualizzaRisposte"];
     $email = $_SESSION['email'];
@@ -44,13 +37,6 @@ session_start();
         $sql = "CALL CREA_TEST('$titolo', '$visualizzaRisposte', '$email')";
         $result = $pdo->query($sql);
 
-        $event = [
-            "timestamp" => time(),
-            "tipo_event" => "crea_test",
-            "descrizione" => $titolo
-        ];
-
-        $result = $collection->insertOne($event);
     } catch (PDOException $e) {
         echo ("Connessione non riuscita") . $e->getMessage();
         exit();

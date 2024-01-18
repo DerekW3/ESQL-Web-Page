@@ -12,13 +12,6 @@ session_start();
 
 <body>
     <?php
-    require '../vendor/autoload.php';
-
-    $mongoClient = new MongoDB\Client('mongodb://127.0.0.1:27017');
-
-    $database = $mongoClient->selectDatabase("ESQL");
-    $collection = $database->selectCollection("Logs");
-
     $nome = $_POST['nome'];
 
     $email = $_SESSION['email'];
@@ -39,14 +32,6 @@ session_start();
 
         $sql = "CREATE TABLE " . $nome . " ( SKIP_ATTRIBUTE INT ) ENGINE = InnoDB";
         $result = $pdo->query($sql);
-
-        $event = [
-            "timestamp" => time(),
-            "tipo_event" => "crea_esercizio",
-            "descrizione" => $nome
-        ];
-
-        $result = $collection->insertOne($event);
     } catch (PDOException $e) {
         echo ("Fallito") . $e->getMessage();
         exit();
