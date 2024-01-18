@@ -36,6 +36,13 @@ session_start();
         <div class="quesiti">
             <h3 class="title">Messaggi Disponibili</h3>
             <?php
+            require '../vendor/autoload.php';
+
+            $mongoClient = new MongoDB\Client('mongodb://127.0.0.1:27017');
+
+            $database = $mongoClient->selectDatabase("ESQL");
+            $collection = $database->selectCollection("Logs");
+
             $tipoUtente = $_SESSION['tipoUtente'];
 
             $email = $_SESSION['email'];

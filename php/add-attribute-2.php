@@ -12,6 +12,13 @@ session_start();
 
 <body>
     <?php
+    require '../vendor/autoload.php';
+
+    $mongoClient = new MongoDB\Client('mongodb://127.0.0.1:27017');
+
+    $database = $mongoClient->selectDatabase("ESQL");
+    $collection = $database->selectCollection("Logs");
+
     $nome = $_POST['nome'];
     $tipoData = $_POST['tipoData'];
     $length = $_POST['length'];
@@ -37,6 +44,14 @@ session_start();
             $sql = "ALTER TABLE " . $nomeTabella . " ADD COLUMN " . $nome . " " . $tipoData . "(" . $length . ")";
             $result = $pdo->query($sql);
         }
+
+        $event = [
+            "timestamp" => time(),
+            "tipo_event" => "aggiungi_attributo",
+            "descrizione" => $nomeTabella . "_" . $nome
+        ];
+
+        $result = $collection->insertOne($event);
     } catch (PDOException $e) {
         echo ("Fallito") . $e->getMessage();
         exit();

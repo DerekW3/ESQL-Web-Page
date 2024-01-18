@@ -8,6 +8,12 @@
 <body>
     <?php
     require_once '../config.php';
+    require '../vendor/autoload.php';
+
+    $mongoClient = new MongoDB\Client('mongodb://127.0.0.1:27017');
+
+    $database = $mongoClient->selectDatabase("ESQL");
+    $collection = $database->selectCollection("Logs");
 
     $nome = $_POST["nomeUtente"];
     $cognome = $_POST["cognomeUtente"];
@@ -54,6 +60,13 @@
         $sql = "CALL iscrivi_docente('$email', '$nome', '$cognome', '$numeroTelefono', '$dipartimento', '$corso')";
         $result = $pdo->exec($sql);
 
+        $event = [
+            "timestamp" => time(),
+            "tipo_event" => "iscrivi_docente",
+            "descrizione" => $email
+        ];
+
+        $result = $collection->insertOne($event);
         $pdo->commit();
     } catch (PDOException $e) {
         echo ('Codice errore' . $e->getMessage());

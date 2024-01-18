@@ -13,6 +13,13 @@ session_start();
 
 <body>
     <?php
+    require '../vendor/autoload.php';
+
+    $mongoClient = new MongoDB\Client('mongodb://127.0.0.1:27017');
+
+    $database = $mongoClient->selectDatabase("ESQL");
+    $collection = $database->selectCollection("Logs");
+
     $nome = $_POST['nomeTabella'];
 
     if (isset($_POST['SubmitButton'])) {
@@ -33,8 +40,15 @@ session_start();
 
         try {
             $sql = "ALTER TABLE " . $nome . " ADD CONSTRAINT FOREIGN KEY (" . $attributes . ") REFERENCES " . $tabella . "(" . $altri . ")";
-            echo $sql;
             $result = $pdo->query($sql);
+
+            $event = [
+                "timestamp" => time(),
+                "tipo_event" => "foreign_key",
+                "descrizione" => $nome
+            ];
+    
+            $result = $collection->insertOne($event);
         } catch (PDOException $e) {
             echo ("Fallito") . $e->getMessage();
             exit();

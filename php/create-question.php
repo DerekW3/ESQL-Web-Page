@@ -12,6 +12,13 @@ session_start();
 
 <body>
     <?php
+    require '../vendor/autoload.php';
+
+    $mongoClient = new MongoDB\Client('mongodb://127.0.0.1:27017');
+
+    $database = $mongoClient->selectDatabase("ESQL");
+    $collection = $database->selectCollection("Logs");
+
     $titoloTest = $_COOKIE['titoloTest'];
     $descrizione = $_POST['descrizione'];
     $livelloDifficolta = $_POST['livelloDifficolta'];
@@ -46,6 +53,14 @@ session_start();
     try {
         $sql = "CALL CREA_QUESITO('$livelloDifficolta', '$descrizione', '$titoloTest', '$tabellaEsercizio')";
         $result = $pdo->query($sql);
+
+        $event = [
+            "timestamp" => time(),
+            "tipo_event" => "crea_quesito",
+            "descrizione" => $titoloTest . $numeroQuesito
+        ];
+
+        $result = $collection->insertOne($event);
     } catch (PDOException $e) {
         echo ("Azione Fallito") . $e->getMessage();
         exit();

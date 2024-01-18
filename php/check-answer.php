@@ -13,6 +13,12 @@ session_start();
 <body>
     <?php
     require_once '../config.php';
+    require '../vendor/autoload.php';
+
+    $mongoClient = new MongoDB\Client('mongodb://127.0.0.1:27017');
+
+    $database = $mongoClient->selectDatabase("ESQL");
+    $collection = $database->selectCollection("Logs");
 
     $titoloTest = $_COOKIE['titoloTest'];
     $page = $_COOKIE['page'];
@@ -103,6 +109,14 @@ session_start();
         }
         $sql = "CALL CONSEGNA_RISPOSTA('$codice', '$titoloTest', '$tipoQuesito', '$numeroQuesito', '$risposta', '$esito')";
         $result = $pdo->query($sql);
+
+        $event = [
+            "timestamp" => time(),
+            "tipo_event" => "risposta",
+            "descrizione" => $codice . "_" . $titoloTest
+        ];
+
+        $result = $collection->insertOne($event);
     } catch (PDOException $e) {
         echo $e->getMessage();
         exit();
