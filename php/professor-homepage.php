@@ -106,6 +106,11 @@ session_start()
                                         <button type=\"submit\">Aggiungi Primary Key</button>
                                     </form>
 
+                                    <form action=\"./fill.php\" method=post>
+                                        <input type=\"hidden\" name=\"nomeTabella\" value=\"$nome\">
+                                        <button type=\"submit\">Riempi</button>
+                                    </form>
+
                                     <form action=\"./add-attribute.php\" method=post>
                                         <input type=\"hidden\" name=\"nomeTabella\" value=\"$nome\">
                                         <button type=\"submit\">Aggiungi</button>

@@ -28,10 +28,11 @@ body {
 
 button {
     height: 4vh;
-    width: 8vw;
+    width: 10vw;
     border: none;
     border-radius: 10px;
     background-color: var(--primary);
+    margin-right: 10px;
 }
 
 h3 {
