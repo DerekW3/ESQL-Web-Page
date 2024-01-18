@@ -30,7 +30,7 @@ session_start();
         $sql = "CALL CREA_ESERCIZIO('$nome', '$email')";
         $result = $pdo->query($sql);
 
-        $sql = "CREATE TABLE " . $nome . " ( EmailUtente VARCHAR(100) ) ENGINE = InnoDB";
+        $sql = "CREATE TABLE " . $nome . " ( SKIP_ATTRIBUTE INT ) ENGINE = InnoDB";
         $result = $pdo->query($sql);
     } catch (PDOException $e) {
         echo ("Fallito") . $e->getMessage();

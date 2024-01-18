@@ -44,6 +44,9 @@ session_start();
             $sql = "INSERT INTO " . $first . " VALUES " . $second;
             echo $sql;
             $result = $pdo->query($sql);
+
+            $sql = "UPDATE ESERCIZI SET num_righe = num_righe + 1 WHERE Nome LIKE '$nome'";
+            $result = $pdo->query($sql);
         } catch (PDOException $e) {
             echo ("Fallito") . $e->getMessage();
             exit();
@@ -73,6 +76,9 @@ session_start();
 
                     foreach ($result as $attribute) {
                         $attribute = $attribute['Field'];
+                        if ($attribute == "SKIP_ATTRIBUTE") {
+                            continue;
+                        }
                         echo
                         "<label for=\"$attribute\"> $attribute </label>
                         <input type=\"text\" name=\"$attribute\" placeholder=\"Entri\">";

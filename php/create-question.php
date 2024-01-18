@@ -28,17 +28,19 @@ session_start();
         exit();
     }
 
-    try {
-        $sql = "SHOW TABLES LIKE '$tabellaEsercizio'";
-        $result = $pdo->query($sql);
+    if ($tipoQuesito == "codice") {
+        try {
+            $sql = "SHOW TABLES LIKE '$tabellaEsercizio'";
+            $result = $pdo->query($sql);
 
-        if ($result->rowCount() == 0) {
-            header("Location: ../webpages/create-question.html");
+            if ($result->rowCount() == 0) {
+                header("Location: ../webpages/create-question.html");
+                exit();
+            }
+        } catch (PDOException $e) {
+            echo ("FAILED") . $e->getMessage();
             exit();
         }
-    } catch (PDOException $e) {
-        echo ("FAILED") . $e->getMessage();
-        exit();
     }
 
     try {
