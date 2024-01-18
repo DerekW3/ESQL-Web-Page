@@ -18,8 +18,6 @@ session_start();
     $page = $_COOKIE['page'];
     $numeroQuesito = $_COOKIE['numeroQuesito'];
     $tipoQuesito = $_COOKIE['tipoQuesito'];
-    $index = $_POST['index'];
-    $soluzione = $_POST['soluzione'];
 
     $email = $_SESSION['email'];
 
@@ -35,22 +33,36 @@ session_start();
 
     try {
         if ($tipoQuesito == 0) {
+            $soluzione = $_POST['soluzione'];
             $sql = "SELECT * FROM CODICE WHERE NumeroQuesito = '$numeroQuesito' AND TitoloTest LIKE '$titoloTest'";
             $result = $pdo->query($sql);
 
-            $soluzione = $result['Soluzione'];
-            $correctResult = $pdo->query($soluzione);
+            foreach ($result as $row) {
+                $temp = $row['Soluzione'];
+            }
+
+            $correctResult = $pdo->query($temp);
+            $correctResultArray = array();
 
             $inputResult = $pdo->query($soluzione);
+            $inputResultArray = array();
 
-            if ($correctResult == $inputResult) {
+
+            foreach ($inputResult as $row) {
+                array_push($inputResultArray, $row);
+            }
+
+            foreach ($correctResult as $row) {
+                array_push($correctResultArray, $row);
+            }
+
+            if (empty(array_diff($inputResultArray, $correctResultArray))) {
                 $esito = 1;
             } else {
                 $esito = 0;
             }
-
-            echo ($esito);
         } else {
+            $index = $_POST['index'];
             $sql = "SELECT * FROM RISPOSTA_CHIUSA WHERE NumeroQuesito = '$numeroQuesito' AND TitoloTest LIKE '$titoloTest' AND NumeroOpzione = '$index'";
             $result = $pdo->query($sql);
 

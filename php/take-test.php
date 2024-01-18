@@ -24,6 +24,12 @@ session_start();
                 $testNum = $_POST['page'];
                 setcookie('page', $testNum, time() + 3.6e6);
             }
+            if (isset($_COOKIE['tipoQuesito'])) {
+                setcookie('tipoQuesito', "", time() - 3600);
+            }
+            if (isset($_COOKIE['numeroQuesito'])) {
+                setcookie('numeroQuesito', "", time() - 3600);
+            }
 
             $email = $_SESSION['email'];
 
