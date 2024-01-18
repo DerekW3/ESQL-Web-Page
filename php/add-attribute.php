@@ -37,11 +37,8 @@ session_start();
                     <option value="DATETIME">DATETIME</option>
                 </select>
 
-                <label for="primaryKey">Primary Key</label>
-                <select name="primaryKey" id="primaryKey" required>
-                    <option value="si">Sì</option>
-                    <option value="no">No</option>
-                </select>
+                <label for="length">Numero di Caratteri</label>
+                <input type="number" placeholder="Entri Numero" name="length">
 
                 <input type="hidden" name="nomeTabella" value="<?php echo $nomeTabella; ?>">
             </div>

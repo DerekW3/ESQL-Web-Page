@@ -14,7 +14,7 @@ session_start();
     <?php
     $nome = $_POST['nome'];
     $tipoData = $_POST['tipoData'];
-    $primaryKey = $_POST['primaryKey'];
+    $length = $_POST['length'];
     $nomeTabella = $_POST['nomeTabella'];
 
     $email = $_SESSION['email'];
@@ -32,11 +32,6 @@ session_start();
     try {
         $sql = "ALTER TABLE " . $nomeTabella . " ADD COLUMN " . $nome . " " . $tipoData;
         $result = $pdo->query($sql);
-
-        if ($primaryKey == "si") {
-            $sql = "ALTER TABLE " . $nomeTabella . " ADD PRIMARY KEY (" . $nome . ")";
-            $result = $pdo->query($sql);
-        }
     } catch (PDOException $e) {
         echo ("Fallito") . $e->getMessage();
         exit();
