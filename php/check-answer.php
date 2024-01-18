@@ -53,24 +53,27 @@ session_start();
                 $temp = $row['Soluzione'];
             }
 
-            $correctResult = $pdo->query($temp);
-            $correctResultArray = array();
+            try {
+                $correctResult = $pdo->query($temp);
+                $correctResultArray = array();
 
-            $inputResult = $pdo->query($soluzione);
-            $inputResultArray = array();
+                $inputResult = $pdo->query($soluzione);
+                $inputResultArray = array();
 
+                foreach ($inputResult as $row) {
+                    array_push($inputResultArray, $row);
+                }
 
-            foreach ($inputResult as $row) {
-                array_push($inputResultArray, $row);
-            }
+                foreach ($correctResult as $row) {
+                    array_push($correctResultArray, $row);
+                }
 
-            foreach ($correctResult as $row) {
-                array_push($correctResultArray, $row);
-            }
-
-            if (empty(array_diff($inputResultArray, $correctResultArray))) {
-                $esito = 1;
-            } else {
+                if (empty(array_diff($inputResultArray, $correctResultArray))) {
+                    $esito = 1;
+                } else {
+                    $esito = 0;
+                }
+            } catch (PDOException) {
                 $esito = 0;
             }
         } else {

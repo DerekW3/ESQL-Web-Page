@@ -55,6 +55,7 @@ session_start();
                 exit();
             }
 
+
             try {
                 $sql = "SELECT * FROM TEST ORDER BY DataCreazione DESC";
                 $result = $pdo->query($sql);
@@ -80,9 +81,21 @@ session_start();
             setcookie("titoloTest", $titoloTest, time() + 3.6e6);
 
             try {
+                $sql = "SELECT * FROM PROVE WHERE CodiceStudente = '$codice' AND TitoloTest LIKE '$titoloTest'";
+                $result = $pdo->query($sql);
+
+                if ($result->rowCount() == 0) {
+                    $sql = "CALL INIZIA_PROVA('$codice', '$titoloTest')";
+                    $result = $pdo->query($sql);
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                exit();
+            }
+
+            try {
                 $sql = "SELECT * FROM QUESITI WHERE TitoloTest LIKE '$titoloTest' ORDER BY Numero";
                 $result = $pdo->query($sql);
-                $answered = array();
 
                 foreach ($result as $row) {
                     $livelloDifficolta = $row['LivelloDifficolta'];
@@ -114,8 +127,6 @@ session_start();
                                     $solved = 1;
                                 }
                             }
-
-                            array_push($answered, $solved);
 
                             if ($solved == 0) {
                                 echo
@@ -152,12 +163,23 @@ session_start();
                         exit();
                     }
                 }
-                if (count($answered) == array_count_values($answered)[1]) {
-                    header("Location: ./student-homepage.php");
-                    exit();
-                }
             } catch (PDOException $e) {
                 echo ("Azione fallito") . $e->getMessage();
+                exit();
+            }
+
+            try {
+                $sql = "SELECT * FROM PROVE WHERE CodiceStudente = '$codice' AND TitoloTest = '$titoloTest'";
+                $result = $pdo->query($sql);
+
+                foreach ($result as $row) {
+                    if ($row['Stato'] == "Concluso") {
+                        header("Location: ./student-homepage.php");
+                        exit();
+                    }
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
                 exit();
             }
             ?>

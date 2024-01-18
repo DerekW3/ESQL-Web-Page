@@ -20,10 +20,17 @@ session_start();
             $testNum = $_POST['page'];
             setcookie('page', $testNum, time() + 3.6e6);
         }
-        echo
-        "<form action=\"./professor-homepage.php\" method=post>
+        if ($_SESSION['tipoUtente'] == 'studente') {
+            echo
+            "<form action=\"./student-homepage.php\" method=post>
                 <button type=\"submit\"><img id=\"messaggi\" src=\"https://cdn4.iconfinder.com/data/icons/navigation-40/24/back-1-1024.png\" alt=\"Andare indietro simbolo\"></button>
-        </form>";
+            </form>";
+        } else {
+            echo
+            "<form action=\"./professor-homepage.php\" method=post>
+                <button type=\"submit\"><img id=\"messaggi\" src=\"https://cdn4.iconfinder.com/data/icons/navigation-40/24/back-1-1024.png\" alt=\"Andare indietro simbolo\"></button>
+            </form>";
+        }
         ?>
         <h3><?php echo ("Ciao, " . $_COOKIE['name']); ?></h3>
         <a href="./messaggi.php"><img id="messaggi" src="https://cdn3.iconfinder.com/data/icons/email-51/48/53-512.png" alt="Simbolo per messaggi"></a>
@@ -126,7 +133,9 @@ session_start();
             <h3 id="title">Azioni Disponibili</h3>
             <div class="azioni">
                 <a href="../webpages/create-question.html"><button class="azione">Crea Nuovo Quesito</button></a>
-                <a href="../webpages/create-question.html"><button class="azione">Visualizza Risposte</button></a>
+                <form action="./visualizza.php" method="post">
+                    <button class="azione" type="submit">Visualizza Risposte</button>
+                </form>
             </div>
         </div>
     </div>
