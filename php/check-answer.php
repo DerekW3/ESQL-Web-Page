@@ -32,6 +32,18 @@ session_start();
     }
 
     try {
+        $sql = "SELECT Codice FROM STUDENTI WHERE EmailUtente LIKE '$email'";
+        $result = $pdo->query($sql);
+
+        foreach ($result as $row) {
+            $codice = $row['Codice'];
+        }
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+        exit();
+    }
+
+    try {
         if ($tipoQuesito == 0) {
             $soluzione = $_POST['soluzione'];
             $sql = "SELECT * FROM CODICE WHERE NumeroQuesito = '$numeroQuesito' AND TitoloTest LIKE '$titoloTest'";
@@ -79,6 +91,22 @@ session_start();
         echo ("Fallito") . $e->getMessage();
         exit();
     }
+
+    try {
+        if (empty($index)) {
+            $risposta = $soluzione;
+        } else {
+            $risposta = $index;
+        }
+        $sql = "CALL CONSEGNA_RISPOSTA('$codice', '$titoloTest', '$tipoQuesito', '$numeroQuesito', '$risposta', '$esito')";
+        $result = $pdo->query($sql);
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+        exit();
+    }
+
+    header("Location: ./take-test.php");
+    exit();
     ?>
 </body>
 

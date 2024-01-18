@@ -44,6 +44,18 @@ session_start();
             }
 
             try {
+                $sql = "SELECT Codice FROM STUDENTI WHERE EmailUtente LIKE '$email'";
+                $result = $pdo->query($sql);
+
+                foreach ($result as $row) {
+                    $codice = $row['Codice'];
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                exit();
+            }
+
+            try {
                 $sql = "SELECT * FROM TEST ORDER BY DataCreazione DESC";
                 $result = $pdo->query($sql);
 
@@ -76,19 +88,66 @@ session_start();
                     $descrizione = $row['Descrizione'];
                     $num = $row['Numero'];
 
-                    echo
-                    "<div class=\"quesito\">
-                        <div id=\"info\" style=\"margin-right: auto;\">
-                            <h3 style=\"color: var(--text);\">$num)   $livelloDifficolta</h3>
-                            <p style=\"color: var(--text);\">$descrizione</p>
-                        </div>
-                        <form action=\"./question-response.php\" method=post>
-                            <input type=\"hidden\" name=numeroQuesito value=\"$num\">
-                            <input type=\"hidden\" name=titoloTest value=\"$titoloTest\">
-                            <input type=\"hidden\" name=page value=\"$testNum\">
-                            <button type=\"submit\">Accedi</button>
-                        </form>
-                    </div>";
+                    try {
+                        $sql = "SELECT * FROM RISPOSTE WHERE CodiceStudente = '$codice' AND TitoloTest LIKE '$titoloTest' AND NumeroQuesito = '$num'";
+                        $result = $pdo->query($sql);
+
+                        if ($result->rowCount() == 0) {
+                            echo
+                            "<div class=\"quesito\">
+                                <div id=\"info\" style=\"margin-right: auto;\">
+                                    <h3 style=\"color: var(--text);\">$num)   $livelloDifficolta</h3>
+                                    <p style=\"color: var(--text);\">$descrizione</p>
+                                </div>
+                                <form action=\"./question-response.php\" method=post>
+                                    <input type=\"hidden\" name=numeroQuesito value=\"$num\">
+                                    <input type=\"hidden\" name=titoloTest value=\"$titoloTest\">
+                                    <input type=\"hidden\" name=page value=\"$testNum\">
+                                    <button type=\"submit\">Accedi</button>
+                                </form>
+                            </div>";
+                        } else {
+                            $solved = 0;
+                            foreach ($result as $row) {
+                                if ($row['Esito'] == 1) {
+                                    $solved = 1;
+                                }
+                            }
+
+                            if ($solved == 0) {
+                                echo
+                                "<div style=\"border: 2px solid red; \" class=\"quesito\">
+                                    <div id=\"info\" style=\"margin-right: auto;\">
+                                        <h3 style=\"color: var(--text);\">$num)   $livelloDifficolta</h3>
+                                        <p style=\"color: var(--text);\">$descrizione</p>
+                                    </div>
+                                    <form action=\"./question-response.php\" method=post>
+                                        <input type=\"hidden\" name=numeroQuesito value=\"$num\">
+                                        <input type=\"hidden\" name=titoloTest value=\"$titoloTest\">
+                                        <input type=\"hidden\" name=page value=\"$testNum\">
+                                        <button type=\"submit\">Accedi</button>
+                                    </form>
+                                </div>";
+                            } else {
+                                echo
+                                "<div style=\"border: 2px solid green;\" class=\"quesito\">
+                                    <div id=\"info\" style=\"margin-right: auto;\">
+                                        <h3 style=\"color: var(--text);\">$num)   $livelloDifficolta</h3>
+                                        <p style=\"color: var(--text);\">$descrizione</p>
+                                    </div>
+                                    <form action=\"./question-response.php\" method=post>
+                                        <input type=\"hidden\" name=numeroQuesito value=\"$num\">
+                                        <input type=\"hidden\" name=titoloTest value=\"$titoloTest\">
+                                        <input type=\"hidden\" name=page value=\"$testNum\">
+                                        <button type=\"submit\">Accedi</button>
+                                    </form>
+                                </div>";
+                            }
+                        }
+                    } catch (PDOException $e) {
+                        echo $e->getMessage();
+                        exit();
+                    }
                 }
             } catch (PDOException $e) {
                 echo ("Azione fallito") . $e->getMessage();
