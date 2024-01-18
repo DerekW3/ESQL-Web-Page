@@ -82,6 +82,7 @@ session_start();
             try {
                 $sql = "SELECT * FROM QUESITI WHERE TitoloTest LIKE '$titoloTest' ORDER BY Numero";
                 $result = $pdo->query($sql);
+                $answered = array();
 
                 foreach ($result as $row) {
                     $livelloDifficolta = $row['LivelloDifficolta'];
@@ -113,6 +114,8 @@ session_start();
                                     $solved = 1;
                                 }
                             }
+
+                            array_push($answered, $solved);
 
                             if ($solved == 0) {
                                 echo
@@ -148,6 +151,10 @@ session_start();
                         echo $e->getMessage();
                         exit();
                     }
+                }
+                if (count($answered) == array_count_values($answered)[1]) {
+                    header("Location: ./student-homepage.php");
+                    exit();
                 }
             } catch (PDOException $e) {
                 echo ("Azione fallito") . $e->getMessage();
