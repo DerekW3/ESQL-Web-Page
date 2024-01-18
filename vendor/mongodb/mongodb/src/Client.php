@@ -95,14 +95,14 @@ class Client
     {
         $driverOptions += ['typeMap' => self::DEFAULT_TYPE_MAP];
 
-        if (! is_array($driverOptions['typeMap'])) {
+        if (!is_array($driverOptions['typeMap'])) {
             throw InvalidArgumentException::invalidType('"typeMap" driver option', $driverOptions['typeMap'], 'array');
         }
 
         if (isset($driverOptions['autoEncryption']['keyVaultClient'])) {
             if ($driverOptions['autoEncryption']['keyVaultClient'] instanceof self) {
                 $driverOptions['autoEncryption']['keyVaultClient'] = $driverOptions['autoEncryption']['keyVaultClient']->manager;
-            } elseif (! $driverOptions['autoEncryption']['keyVaultClient'] instanceof Manager) {
+            } elseif (!$driverOptions['autoEncryption']['keyVaultClient'] instanceof Manager) {
                 throw InvalidArgumentException::invalidType('"keyVaultClient" autoEncryption option', $driverOptions['autoEncryption']['keyVaultClient'], [self::class, Manager::class]);
             }
         }
@@ -175,7 +175,7 @@ class Client
         if (isset($options['keyVaultClient'])) {
             if ($options['keyVaultClient'] instanceof self) {
                 $options['keyVaultClient'] = $options['keyVaultClient']->manager;
-            } elseif (! $options['keyVaultClient'] instanceof Manager) {
+            } elseif (!$options['keyVaultClient'] instanceof Manager) {
                 throw InvalidArgumentException::invalidType('"keyVaultClient" option', $options['keyVaultClient'], [self::class, Manager::class]);
             }
         }
@@ -196,13 +196,13 @@ class Client
      */
     public function dropDatabase(string $databaseName, array $options = [])
     {
-        if (! isset($options['typeMap'])) {
+        if (!isset($options['typeMap'])) {
             $options['typeMap'] = $this->typeMap;
         }
 
         $server = select_server_for_write($this->manager, $options);
 
-        if (! isset($options['writeConcern']) && ! is_in_transaction($options)) {
+        if (!isset($options['writeConcern']) && !is_in_transaction($options)) {
             $options['writeConcern'] = $this->writeConcern;
         }
 
@@ -352,17 +352,17 @@ class Client
      */
     public function watch(array $pipeline = [], array $options = [])
     {
-        if (! isset($options['readPreference']) && ! is_in_transaction($options)) {
+        if (!isset($options['readPreference']) && !is_in_transaction($options)) {
             $options['readPreference'] = $this->readPreference;
         }
 
         $server = select_server($this->manager, $options);
 
-        if (! isset($options['readConcern']) && ! is_in_transaction($options)) {
+        if (!isset($options['readConcern']) && !is_in_transaction($options)) {
             $options['readConcern'] = $this->readConcern;
         }
 
-        if (! isset($options['typeMap'])) {
+        if (!isset($options['typeMap'])) {
             $options['typeMap'] = $this->typeMap;
         }
 
@@ -392,7 +392,7 @@ class Client
         ];
 
         if (isset($driver['name'])) {
-            if (! is_string($driver['name'])) {
+            if (!is_string($driver['name'])) {
                 throw InvalidArgumentException::invalidType('"name" handshake option', $driver['name'], 'string');
             }
 
@@ -400,7 +400,7 @@ class Client
         }
 
         if (isset($driver['version'])) {
-            if (! is_string($driver['version'])) {
+            if (!is_string($driver['version'])) {
                 throw InvalidArgumentException::invalidType('"version" handshake option', $driver['version'], 'string');
             }
 
