@@ -60,7 +60,7 @@ session_start()
                                         <h3 style=\"color: var(--text);\">$dataCreazione</h3>
                                     </div>
 
-                                    <form action=\"./view-test.php\" method=post>
+                                    <form action=\"./add-attribute.php\" method=post>
                                         <input type=\"hidden\" name=page value=\"$testNum\">
                                         <button type=\"submit\">Accedi</button>
                                     </form>
@@ -96,9 +96,9 @@ session_start()
                                         <h3 style=\"color: var(--text);\">$dataCreazioneTabella</h3>
                                     </div>
 
-                                    <form action=\"./edit-tabella.php\" method=post>
-                                        <input type=\"hidden\" name=nome value=\"$nome\">
-                                        <button type=\"submit\">Edita</button>
+                                    <form action=\"./add-attribute.php\" method=post>
+                                        <input type=\"hidden\" name=\"nomeTabella\" value=\"$nome\">
+                                        <button type=\"submit\">Aggiungi</button>
                                     </form>
                                 </div>";
                 }

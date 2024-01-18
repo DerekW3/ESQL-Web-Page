@@ -42,7 +42,7 @@
         $sql = "CREATE USER '$email'@'localhost' IDENTIFIED BY '$password'";
         $result = $pdo->query($sql);
 
-        $sql = "GRANT SELECT, CREATE, INSERT, UPDATE, EXECUTE on ESQL.* TO '$email'@'localhost'";
+        $sql = "GRANT SELECT, ALTER, CREATE, INSERT, UPDATE, EXECUTE on ESQL.* TO '$email'@'localhost'";
         $result = $pdo->query($sql);
 
         if (!empty($telefono)) {
